@@ -8,4 +8,4 @@ PlusProComponents 团队在正常情况下使用 每周 发布策略， 但关�
 
 ## 推荐版本
 
-推荐选择[release](https://github.com/plus-pro-components/plus-pro-components/releases)版本，参考[release 版本列表](https://github.com/plus-pro-components/plus-pro-components/releases)。
+推荐选择[release](https://github.com/plus-pro-components/plus-pro-components/releases)版本，功能稳定。参考[release 版本列表](https://github.com/plus-pro-components/plus-pro-components/releases)。

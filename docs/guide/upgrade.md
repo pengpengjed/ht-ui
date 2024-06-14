@@ -2,6 +2,14 @@
 
 本记录只记录影响较大变更，对于一般[新功能、性能提升和问题修复](/guide/changelog.html)不在此记录。
 
+## 从 v0.1.8 迁移到 v0.1.11
+
+- 提升了组件 TS 类型兼容性
+
+  在 v0.1.8 版本的基础上，提升了组件的 TS 类型兼容性，不存在的类型不再会提示类型错误。
+
+<el-divider />
+
 ## 从 v0.1.7 迁移到 v0.1.8
 
 - [PlusColumn](/components/config.html) 中的 `formItemProps` 中的 `labelWidth` 开始生效，原来[PlusColumn](/components/config.html) 中的配置 `labelWidth` 不再生效。
@@ -21,8 +29,13 @@ const columns: PlusColumn[] = [
 ]
 ```
 
+- 组件 TS 类型更加严格
+
+  组件的 TS 类型更加严格了，提示性更好了，兼容性降低了，不影响功能，但是会提示类型错误。
+
 <el-divider />
-## v0.1.6
+
+## 从 v0.1.4 迁移到 v0.1.6
 
 ### [PlusDrawerForm](/components/drawer-form.html)
 
