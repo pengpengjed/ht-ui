@@ -84,31 +84,14 @@ const columns = [
 
 ### 需要 `事件修饰符` 和 `按键修饰符`的事件写法示例
 
-::: tip 提示
+[参考 Vue 官方写法](https://cn.vuejs.org/guide/extras/render-function.html#event-modifiers)
 
-[W3C](https://www.w3.org/MarkUp/html-spec/html-spec_8.html#SEC8.2) 标准定义：
+- 对于 `.passive`、`.capture` 和 `.once` 事件修饰符，可以使用驼峰写法将他们拼接在事件名后面。
 
-当一个表单中只有一个单行文本输入字段时， 浏览器应当将在此字段中按下 Enter （回车键）的行为视为提交表单的请求。  
-:::
+  示例
 
-以`fieldProps`为例，支持点击阻止事件冒泡, 按下 Enter 键提交搜索等。
-
-```html
-<template>
-  <div @click="handleClickWrapper">
-    <PlusSearch v-model="state" :columns="columns" :has-unfold="false" @search="handleSearch" />
-  </div>
-</template>
-
-<script lang="ts" setup>
-  import { ref, withKeys, withModifiers } from 'vue'
+  ```ts
   import type { PlusColumn } from 'plus-pro-components'
-
-  const state = ref({
-    text: '我是一段有想法的文本',
-    name: '名字',
-    time: new Date().toString()
-  })
 
   const columns: PlusColumn[] = [
     {
@@ -116,45 +99,88 @@ const columns = [
       prop: 'text',
       valueType: 'text',
       fieldProps: {
-        style: {
-          cursor: 'pointer',
-          userSelect: 'none'
+        onClickCapture() {
+          /* 捕捉模式中的监听器 */
         },
-        // 阻止事件冒泡，只有点击自己时触发
-        onClick: withModifiers(() => {
-          console.log('点击文本了')
-        }, ['stop', 'self'])
+        onKeyupOnce() {
+          /* 只触发一次 */
+        },
+        onMouseoverOnceCapture() {
+          /* 单次 + 捕捉 */
+        }
       }
-    },
-    // valueType 没有的情况下，默认为'input'，对应el-input组件
-    {
-      label: '名称1',
-      prop: 'name',
-      fieldProps: {
-        // 当前输入框聚焦状态，按下Enter 键提交搜索
-        onKeyup: withKeys(() => {
-          handleSearch()
-        }, ['enter'])
-      }
-    },
-    /**
-     * 凑数的
-     * 当一个表单中只有一个单行文本输入字段时， 浏览器应当将在此字段中按下 Enter （回车键）的行为视为提交表单的请求。
-     */
-    {
-      label: '时间',
-      prop: 'time',
-      valueType: 'date-picker'
     }
   ]
-  const handleSearch = () => {
-    console.log('Enter 键触发了')
-  }
-  const handleClickWrapper = () => {
-    console.log('点击第一个文本时，不会被事件冒泡机制触发，点击其他地方正常触发')
-  }
-</script>
-```
+  ```
+
+- 其他`修饰符`写法，需要使用`withKeys`、[withModifiers](https://cn.vuejs.org/api/render-function.html#withmodifiers)
+
+  以`fieldProps`为例，支持点击阻止事件冒泡, 按下 Enter 键提交搜索等。
+
+  ```html
+  <template>
+    <div @click="handleClickWrapper">
+      <PlusSearch v-model="state" :columns="columns" :has-unfold="false" @search="handleSearch" />
+    </div>
+  </template>
+
+  <script lang="ts" setup>
+    import { ref, withKeys, withModifiers } from 'vue'
+    import type { PlusColumn } from 'plus-pro-components'
+
+    const state = ref({
+      text: '我是一段有想法的文本',
+      name: '名字',
+      time: new Date().toString()
+    })
+
+    const columns: PlusColumn[] = [
+      {
+        label: '文本',
+        prop: 'text',
+        valueType: 'text',
+        fieldProps: {
+          style: {
+            cursor: 'pointer',
+            userSelect: 'none'
+          },
+          // 阻止事件冒泡，只有点击自己时触发
+          onClick: withModifiers(() => {
+            console.log('点击文本了')
+          }, ['stop', 'self'])
+        }
+      },
+      // valueType 没有的情况下，默认为'input'，对应el-input组件
+      {
+        label: '名称1',
+        prop: 'name',
+        fieldProps: {
+          // 当前输入框聚焦状态，按下Enter 键提交搜索
+          onKeyup: withKeys(() => {
+            handleSearch()
+          }, ['enter'])
+        }
+      },
+      /**
+       * 凑数的
+       * 当一个表单中只有一个单行文本输入字段时， 浏览器应当将在此字段中按下 Enter （回车键）的行为视为提交表单的请求。
+       */
+      {
+        label: '时间',
+        prop: 'time',
+        valueType: 'date-picker'
+      }
+    ]
+    const handleSearch = () => {
+      console.log('Enter 键触发了')
+    }
+    const handleClickWrapper = () => {
+      console.log('点击第一个文本时，不会被事件冒泡机制触发，点击其他地方正常触发')
+    }
+  </script>
+  ```
+
+[vue 官方建议使用 withModifiers，为什么使用 withKeys？](https://github.com/vuejs/babel-plugin-jsx/issues/269)
 
 ### PlusLayout 子组件事件写法示例
 
@@ -184,8 +210,6 @@ const handleToggleCollapse = (collapse: boolean) => {
   console.log(collapse)
 }
 ```
-
-[vue 官方建议使用 withModifiers，为什么使用 withKeys？](https://github.com/vuejs/babel-plugin-jsx/issues/269)
 
 ### 其他\*Props 和高级组件事件写法参考上面示例
 
