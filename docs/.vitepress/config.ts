@@ -1,6 +1,9 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig, HeadConfig } from 'vitepress'
 import { mdPlugin } from './plugins/mdPlugin'
 import pkg from '../../package.json'
+
+// 生产环境判断
+const isEnvProduction = process.env.NODE_ENV === 'production'
 
 const content = [
   'vue 版本的 procomponents',
@@ -39,7 +42,7 @@ export default defineConfig({
       }
     ],
     ['meta', { name: 'keywords', content }],
-    ['script', { src: '/hmt.js' }],
+    ...((isEnvProduction ? [['script', { src: '/hmt.js' }]] : []) as unknown as HeadConfig[]),
     ['script', { src: '/style.js' }],
     ['script', { src: '/iconfont-symbol.js' }],
     ['link', { rel: 'icon', href: '/logo.png' }]
