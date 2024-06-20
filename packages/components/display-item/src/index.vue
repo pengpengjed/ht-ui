@@ -49,13 +49,9 @@
     v-html="column.renderHTML(displayValue, renderParams)"
   />
 
-  <!-- 状态显示 -->
+  <!-- 状态显示 `select`, `radio`, `checkbox`-->
   <span
-    v-else-if="
-      column.valueType === 'select' ||
-      column.valueType === 'radio' ||
-      column.valueType === 'checkbox'
-    "
+    v-else-if="statusValueTypes.includes(column.valueType)"
     class="plus-display-item plus-display-item__badge"
     v-bind="customFieldProps"
   >
@@ -67,13 +63,18 @@
       ]"
       :style="{ backgroundColor: getStatus.color }"
     />
-    {{ getStatus.label }}
+    {{
+      column.formatter && isFunction(column.formatter)
+        ? column.formatter(displayValue, renderParams)
+        : getStatus.label
+    }}
   </span>
 
   <!-- 复制 -->
   <span v-else-if="column.valueType === 'copy'" class="plus-display-item">
-    {{ displayValue }}
+    {{ formatterValue }}
     <el-icon
+      v-if="displayValue"
       size="16"
       class="plus-display-item__icon__copy"
       v-bind="customFieldProps"
@@ -96,7 +97,8 @@
       <template v-for="(fieldSlot, key) in column.fieldSlots" :key="key" #[key]="data">
         <component :is="fieldSlot" :value="displayValue" v-bind="{ ...renderParams, ...data }" />
       </template>
-      {{ column.valueType === 'link' ? column.linkText || displayValue : displayValue }}
+
+      {{ formatterValue }}
     </component>
     <!--no slots  -->
     <component
@@ -105,14 +107,7 @@
       :class="['plus-display-item', displayComponent.class]"
       v-bind="{ ...renderParams, ...displayComponentProps }"
     >
-      {{
-        displayComponent.format
-          ? displayComponent.format(
-              displayValue,
-              displayComponentProps?.format || displayComponentProps?.valueFormat
-            )
-          : displayValue
-      }}
+      {{ formatterValue }}
     </component>
   </template>
 
@@ -122,11 +117,11 @@
     class="plus-form-item-field"
     v-bind="customFieldProps"
   >
-    {{ displayValue }}
+    {{ formatterValue }}
   </el-divider>
 
   <!-- 没有format -->
-  <span v-else class="plus-display-item" v-bind="customFieldProps">{{ displayValue }} </span>
+  <span v-else class="plus-display-item" v-bind="customFieldProps">{{ formatterValue }} </span>
 
   <slot name="edit-icon">
     <el-icon
@@ -212,6 +207,7 @@ const subRow = ref(cloneDeep(props.row))
 const customFieldPropsIsReady = ref(false)
 const isEdit = ref(false)
 const falseArray = [false, 'click', 'dblclick']
+const statusValueTypes: (string | undefined)[] = ['select', 'radio', 'checkbox']
 
 watch(
   () => [props.editable, props.column.editable],
@@ -244,7 +240,7 @@ const hasEditIcon = computed(
     (props.editable === 'click' || props.editable === 'dblclick') && props.column.editable !== false
 )
 
-/** 多层值支持 */
+/** 多层值支持，原始值 */
 const displayValue = computed({
   get() {
     return getValue(subRow.value, props.column.prop)
@@ -252,6 +248,33 @@ const displayValue = computed({
   set(value) {
     setValue(subRow.value, props.column.prop, value)
   }
+})
+
+/** 格式化后的值  */
+const formatterValue = computed(() => {
+  //  link 支持统一字段
+  const value =
+    props.column.valueType === 'link'
+      ? props.column.linkText || displayValue.value
+      : displayValue.value
+
+  // 格式化，不包含状态类型和表单
+  if (!statusValueTypes.includes(props.column.valueType) && !isEdit.value) {
+    // formatter 第一优先
+    if (props.column.formatter && isFunction(props.column.formatter)) {
+      return props.column.formatter(value, renderParams.value)
+    }
+
+    // 自身的 format，日期和金钱
+    if (displayComponent.value.format && isFunction(displayComponent.value.format)) {
+      return displayComponent.value.format(
+        value,
+        customFieldProps.value.format || customFieldProps.value.valueFormat
+      )
+    }
+  }
+
+  return value
 })
 
 /**
@@ -287,7 +310,7 @@ const renderParams = computed(() => ({
 }))
 
 const imageUrl = computed(() => {
-  const option = displayValue.value
+  const option = formatterValue.value
   if (option && isString(option)) {
     return { options: [option], url: option }
   }
@@ -328,7 +351,7 @@ const displayComponentProps = computed<any>(() => {
     // progress
     ...(props.column.valueType === 'progress'
       ? {
-          percentage: displayValue.value
+          percentage: formatterValue.value
         }
       : null),
     // link
@@ -340,7 +363,7 @@ const displayComponentProps = computed<any>(() => {
     // avatar
     ...(props.column.valueType === 'avatar'
       ? {
-          src: displayValue.value
+          src: formatterValue.value
         }
       : null),
     ...customFieldProps.value
