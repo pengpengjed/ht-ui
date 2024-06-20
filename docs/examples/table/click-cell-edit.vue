@@ -5,10 +5,8 @@
       <el-button type="danger" @click="handleDelete">移除数据</el-button>
       <el-button plain @click="handleEditable(true)">开启编辑</el-button>
       <el-button plain @click="handleEditable(false)">关闭编辑</el-button>
-      <el-button type="primary" @click="handleEditable('click')">
-        切换点击（click）单元格开启编辑
-      </el-button>
-      <el-button type="primary" @click="handleEditable('dblclick')">
+      <el-button @click="handleEditable('click')"> 切换点击（click）单元格开启编辑 </el-button>
+      <el-button @click="handleEditable('dblclick')">
         切换双击（dblclick）单元格开启编辑
       </el-button>
     </el-row>

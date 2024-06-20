@@ -64,17 +64,15 @@ table/action-bar
 
 ## 操作栏事件
 
-<el-tag>v0.1.8</el-tag>
-
-操作栏除了支持[PlusTable Event](/components/table.html#table-events)中的`clickAction`和`clickActionConfirmCancel`外，还支持自身的事件。
+操作栏除了支持[PlusTable Event](/components/table.html#table-events)中的`clickAction`和`clickActionConfirmCancel`外，<el-tag>v0.1.8</el-tag>版本开始支持自身的事件。
 
 [ActionBarButtonsRow](/components/type.html#actionbarbuttonsrow)支持以下事件。
 
-| 事件名      | 类型                                                                          | 触发说明                                                                                                                                                                |
-| ----------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `onClick`   | [ActionBarButtonsRow['onClick']](/components/type.html#actionbarbuttonsrow)   | 点击当前按钮的时触发，可与 PlusTable 的事件 `clickAction` 同时触发；操作需要二次确认时：PlusTable 的事件 `clickAction`会在确认时触发，而当前的 onClick 是在点击时触发； |
-| `onConfirm` | [ActionBarButtonsRow['onConfirm']](/components/type.html#actionbarbuttonsrow) | 操作需要二次确认时，点击确认时触发                                                                                                                                      |
-| `onCancel`  | [ActionBarButtonsRow['onCancel'] ](/components/type.html#actionbarbuttonsrow) | 操作需要二次确认时，点击取消时触发， 可与 PlusTable 的事件 `clickActionConfirmCancel` 同时触发                                                                          |
+| 事件名                             | 类型                                                                          | 触发说明                                                                                                                                                                |
+| ---------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `onClick`<el-tag>v0.1.8</el-tag>   | [ActionBarButtonsRow['onClick']](/components/type.html#actionbarbuttonsrow)   | 点击当前按钮的时触发，可与 PlusTable 的事件 `clickAction` 同时触发；操作需要二次确认时：PlusTable 的事件 `clickAction`会在确认时触发，而当前的 onClick 是在点击时触发； |
+| `onConfirm`<el-tag>v0.1.8</el-tag> | [ActionBarButtonsRow['onConfirm']](/components/type.html#actionbarbuttonsrow) | 操作需要二次确认时，点击确认时触发                                                                                                                                      |
+| `onCancel`<el-tag>v0.1.8</el-tag>  | [ActionBarButtonsRow['onCancel'] ](/components/type.html#actionbarbuttonsrow) | 操作需要二次确认时，点击取消时触发， 可与 PlusTable 的事件 `clickActionConfirmCancel` 同时触发                                                                          |
 
 :::demo
 
@@ -475,6 +473,31 @@ table/custom-header-tsx
 :::demo
 
 table/icon-slot
+
+:::
+
+## 表格显示格式化
+
+表格显示可通过以下三种方式格式化
+
+| 方式一                                                          | 说明                                                                           | [PlusColumn](/components/config.html)[`valueType`]是否生效 | 版本支持                 |
+| --------------------------------------------------------------- | ------------------------------------------------------------------------------ | ---------------------------------------------------------- | ------------------------ |
+| [PlusColumn](/components/config.html)[`render`]返回一个字符串时 | 完全自定义表格行，[PlusColumn](/components/config.html)[`valueType`]不再生效。 | 否                                                         | <el-tag>v0.0.1</el-tag>  |
+| [PlusColumn](/components/config.html)[`fieldSlots`]             | 定义[PlusColumn](/components/config.html)[`valueType`]对应的组件的插槽         | 是                                                         | <el-tag>v0.0.1</el-tag>  |
+| [PlusColumn](/components/config.html)[`formatter`]              | 仅仅格式化显示的值                                                             | 是                                                         | <el-tag>v0.1.12</el-tag> |
+
+[[PlusColumn](/components/config.html)[`render`] 使用示例](/components/table.html#自定义表格项和表单项-render)
+[[PlusColumn](/components/config.html)[`fieldSlots`] 使用示例](/components/table.html#表格显示单项插槽配置)
+
+以下是[PlusColumn](/components/config.html)[`formatter`] 的示例
+
+<el-tag>v0.1.12</el-tag>
+
+<el-divider/>
+
+:::demo
+
+table/formatter
 
 :::
 
