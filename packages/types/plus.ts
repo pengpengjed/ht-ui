@@ -176,10 +176,7 @@ export interface CommonType {
    *
    * ```
    */
-  render?: (
-    value: FieldValueType,
-    data: { row: RecordType; column: PlusColumn; index: number }
-  ) => RenderTypes
+  render?: (value: any, data: { row: RecordType; column: PlusColumn; index: number }) => RenderTypes
 
   /**
    * @desc  自定义渲染单行显示内容 需要返回一个 html字符串，`renderHTML`的优先级低于`render`，高于`valueType`。
@@ -202,10 +199,7 @@ export interface CommonType {
    *
    *```
    */
-  renderHTML?: (
-    value: FieldValueType,
-    data: { row: RecordType; column: PlusColumn; index: number }
-  ) => string
+  renderHTML?: (value: any, data: { row: RecordType; column: PlusColumn; index: number }) => string
 
   /**
    * @desc 渲染table表单的Header
