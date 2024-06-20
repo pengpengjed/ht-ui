@@ -345,10 +345,10 @@ table/custom-cell-slot
 **render 的优先级高于插槽**。
 :::
 
-- 自定义表格项
+- 自定义表格项 （格式化表格显示）
 
   使用 render 函数自定义表格项。
-  `render` 方法需要返回一个 [VNode](https://cn.vuejs.org/guide/extras/render-function.html) 或 `String`。
+  `render` 方法需要返回一个 [VNode](https://cn.vuejs.org/guide/extras/render-function.html) 或 `string`，返回一个`string`时可以用来格式化表格显示。
 
   自定义表格项还支持 `renderHTML`方法，需要返回一个 HTML 字符串。**谨慎使用，确保 HTML 字符串可信。**
 

@@ -37,6 +37,7 @@ const TestServe = {
         index,
         id: index,
         name: index + 'name',
+        tag: index % 2 === 0 ? '0' : '1',
         status: String(index % 3),
         status0: String(index % 3),
         status1: String(index % 3),
@@ -73,6 +74,12 @@ const statusOptions = [
 ]
 const typeList = ['success', 'warning', 'info']
 const tableConfig: PlusColumn[] = [
+  {
+    label: '格式化显示',
+    width: 140,
+    prop: 'tag',
+    render: value => (value === '0' ? '开启' : '关闭')
+  },
   {
     label: '自定义组件div',
     tooltip: '名称最多显示6个字符',
