@@ -78,6 +78,7 @@ const tableConfig: PlusColumn[] = [
     label: '格式化显示',
     width: 140,
     prop: 'tag',
+    // 返回一个字符串
     render: value => (value === '0' ? '开启' : '关闭')
   },
   {
@@ -85,7 +86,7 @@ const tableConfig: PlusColumn[] = [
     tooltip: '名称最多显示6个字符',
     width: 140,
     prop: 'name',
-    // 返回一个标签字符串
+    // 返回一个标签
     render: value => h('div', null, `${value}`),
     // 传递给  'div' props
     fieldProps: value => {
@@ -117,7 +118,7 @@ const tableConfig: PlusColumn[] = [
     label: '自定义组件ElAlert',
     width: 150,
     prop: 'status0',
-    // 返回一个VNode
+    // 返回一个组件
     render: value => {
       const item = statusOptions.find(item => item.value === value)
       return h(ElAlert as unknown as Component, { type: item?.type }, () => item?.label)
@@ -128,9 +129,7 @@ const tableConfig: PlusColumn[] = [
     width: 100,
     prop: 'status1',
     // 返回一个组件
-    render: () => {
-      return h(CustomPageHeader)
-    },
+    render: () => h(CustomPageHeader),
     // 传递给CustomPageHeader 组件的props
     fieldProps: (value, { index }) => ({
       content: index
