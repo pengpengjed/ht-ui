@@ -24,8 +24,8 @@
   <br>
 </p>
 
-<p align="center">plus-pro-components</p>
- 
+# plus-pro-components
+
 **页面级别的前端组件**
 
 **中文** | [English](https://github.com/plus-pro-components/plus-pro-components/blob/dev/README.md)

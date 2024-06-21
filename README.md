@@ -24,7 +24,7 @@
   <br>
 </p>
 
-<p align="center">plus-pro-components</p>
+# plus-pro-components
 
 **Frontend components at the page level**
 
