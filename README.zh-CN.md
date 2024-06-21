@@ -24,7 +24,7 @@
   <br>
 </p>
 
-<h1 align="center">plus-pro-components</h1>
+<p align="center">plus-pro-components</p>
  
 **页面级别的前端组件**
 
