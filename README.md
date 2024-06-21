@@ -1,6 +1,31 @@
-# plus-pro-components
+<p align="center">
+  <img width="180px" src="https://plus-pro-components.github.io/logo.png">
+</p>
 
-[![ElementPlus version badge](https://img.shields.io/npm/v/plus-pro-components.svg?style=flat-square)](https://www.npmjs.org/package/plus-pro-components)[![ docs by vitepress](https://img.shields.io/badge/docs%20by-vitepress-10b981)](https://vitepress.dev/)[![Build With Vite](https://img.shields.io/badge/build%20with-rollup-646cff.svg)](https://rollupjs.org/)[![pnpm](https://img.shields.io/badge/maintained%20with-pnpm-cc00ff.svg)](https://www.pnpm.cn/)[![element-plus](https://img.shields.io/badge/ui%20-element%20plus-409eff.svg)](https://element-plus.org/)[![gzip](https://img.badgesize.io/https:/unpkg.com/plus-pro-components/index.min.js?style=flat-square&compression=gzip)](https://unpkg.com/plus-pro-components/index.min.js)
+<p align="center">
+  <a href="https://www.npmjs.com/package/plus-pro-components">
+    <img src="https://img.shields.io/npm/v/plus-pro-components.svg?style=flat-square" />
+  </a>
+  <a href="https://vitepress.dev/">
+    <img src="https://img.shields.io/badge/docs%20by-vitepress-10b981" />
+  </a>
+  <a href="https://rollupjs.org/">
+    <img src="https://img.shields.io/badge/build%20with-rollup-646cff.svg" />
+  </a>
+  <a href="https://www.pnpm.cn/">
+    <img src="https://img.shields.io/badge/maintained%20with-pnpm-cc00ff.svg" />
+  </a>
+  <a href="https://element-plus.org/">
+    <img src="https://img.shields.io/badge/ui%20width-element%20plus-409eff.svg" />
+  </a>
+  <a href="https://npmcharts.com/compare/plus-pro-components?minimal=true">
+    <img src="https://img.shields.io/npm/dm/plus-pro-components
+    " />
+  </a>
+  <br>
+</p>
+
+<h1 align="center">plus-pro-components</h1>
 
 **Frontend components at the page level**
 
@@ -70,9 +95,13 @@ plus-pro-components is a Vue and element plus based component library that provi
 | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Edge                                                                                                                                              | last 2 versions                                                                                                                                         | last 2 versions                                                                                                                                         | last 2 versions                                                                                                                                         |
 
-## Local Development Guidelines
+## Contribution
 
-[Local Development Guidelines](https://plus-pro-components.github.io/guide/dev.html)
+Please make sure to read the [Contributing Guide](https://plus-pro-components.github.io/guide/contribution.html) and [Local Development Guidelines](https://plus-pro-components.github.io/guide/dev.html) before making a pull request.
+
+Thank you to all the people who already contributed to plus-pro-components!
+
+<a href="https://github.com/vuejs/core/graphs/contributors"><img src="https://opencollective.com/plus-pro-components/contributors.svg?width=890" /></a>
 
 ## Donate
 
@@ -81,6 +110,8 @@ If you find this project useful, you can buy author a glass of juice 🍹
 | Wechat                                                                                                         | Alipay                                                                                                          |
 | -------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
 | <img src="https://plus-pro-components-1252186245.cos.ap-chengdu.myqcloud.com/wx.jpg" height="188" width="188"> | <img src="https://plus-pro-components-1252186245.cos.ap-chengdu.myqcloud.com/ali.jpg" height="188" width="188"> |
+
+Thank you to all those who have made donations for the plus-pro-components! [Donation List](https://plus-pro-components.com/donate.html#%E6%8D%90%E8%B5%A0%E8%80%85%E5%90%8D%E5%8D%95)
 
 ## LICENSE
 

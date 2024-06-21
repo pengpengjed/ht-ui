@@ -1,7 +1,32 @@
-# plus-pro-components
+<p align="center">
+  <img width="180px" src="https://plus-pro-components.github.io/logo.png">
+</p>
 
-[![ElementPlus version badge](https://img.shields.io/npm/v/plus-pro-components.svg?style=flat-square)](https://www.npmjs.org/package/plus-pro-components)[![ docs by vitepress](https://img.shields.io/badge/docs%20by-vitepress-10b981)](https://vitepress.dev/)[![Build With Vite](https://img.shields.io/badge/build%20with-rollup-646cff.svg)](https://rollupjs.org/)[![pnpm](https://img.shields.io/badge/maintained%20with-pnpm-cc00ff.svg)](https://www.pnpm.cn/)[![element-plus](https://img.shields.io/badge/ui%20-element%20plus-409eff.svg)](https://element-plus.org/)[![gzip](https://img.badgesize.io/https:/unpkg.com/plus-pro-components/index.min.js?style=flat-square&compression=gzip)](https://unpkg.com/plus-pro-components/index.min.js)
+<p align="center">
+  <a href="https://www.npmjs.com/package/plus-pro-components">
+    <img src="https://img.shields.io/npm/v/plus-pro-components.svg?style=flat-square" />
+  </a>
+  <a href="https://vitepress.dev/">
+    <img src="https://img.shields.io/badge/docs%20by-vitepress-10b981" />
+  </a>
+  <a href="https://rollupjs.org/">
+    <img src="https://img.shields.io/badge/build%20with-rollup-646cff.svg" />
+  </a>
+  <a href="https://www.pnpm.cn/">
+    <img src="https://img.shields.io/badge/maintained%20with-pnpm-cc00ff.svg" />
+  </a>
+  <a href="https://element-plus.org/">
+    <img src="https://img.shields.io/badge/ui%20width-element%20plus-409eff.svg" />
+  </a>
+  <a href="https://npmcharts.com/compare/plus-pro-components?minimal=true">
+    <img src="https://img.shields.io/npm/dm/plus-pro-components
+    " />
+  </a>
+  <br>
+</p>
 
+<h1 align="center">plus-pro-components</h1>
+ 
 **页面级别的前端组件**
 
 **中文** | [English](https://github.com/plus-pro-components/plus-pro-components/blob/dev/README.md)
@@ -70,9 +95,14 @@ plus-pro-components 是一个基于 Vue 和 element-plus 的组件库，它提�
 | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Edge                                                                                                                                              | last 2 versions                                                                                                                                         | last 2 versions                                                                                                                                         | last 2 versions                                                                                                                                         |
 
-## 本地开发指南
+## 贡献
 
-[本地开发指南](https://plus-pro-components.com/guide/dev.html)
+在贡献代码之前请阅读[贡献指南
+](https://plus-pro-components.com/guide/contribution.html) 和 [本地开发指南](https://plus-pro-components.com/guide/dev.html) 。
+
+感谢所有已经为 plus-pro-components 组件做出贡献的人！
+
+<a href="https://github.com/vuejs/core/graphs/contributors"><img src="https://opencollective.com/plus-pro-components/contributors.svg?width=890" /></a>
 
 ## 捐赠
 
@@ -81,6 +111,8 @@ plus-pro-components 是一个基于 Vue 和 element-plus 的组件库，它提�
 | 微信                                                                                                           | 支付宝                                                                                                          |
 | -------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
 | <img src="https://plus-pro-components-1252186245.cos.ap-chengdu.myqcloud.com/wx.jpg" height="188" width="188"> | <img src="https://plus-pro-components-1252186245.cos.ap-chengdu.myqcloud.com/ali.jpg" height="188" width="188"> |
+
+感谢所有已经为 plus-pro-components 组件做出捐赠的人！[捐赠列表](https://plus-pro-components.com/donate.html#%E6%8D%90%E8%B5%A0%E8%80%85%E5%90%8D%E5%8D%95)
 
 ## LICENSE
 
