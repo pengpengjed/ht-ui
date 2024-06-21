@@ -19,8 +19,7 @@
     <img src="https://img.shields.io/badge/ui%20width-element%20plus-409eff.svg" />
   </a>
   <a href="https://npmcharts.com/compare/plus-pro-components?minimal=true">
-    <img src="https://img.shields.io/npm/dm/plus-pro-components
-    " />
+    <img src="https://img.shields.io/npm/dm/plus-pro-components" />
   </a>
   <br>
 </p>
