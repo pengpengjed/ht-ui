@@ -108,6 +108,11 @@ export type PlusFormSelfProps = {
   rules?: ElementPlusFormProps['rules']
   group?: false | PlusFormGroupRow[]
   cardProps?: Partial<Mutable<CardProps>>
+  /**
+   * @desc 阻止el-form的默认提交表单行为
+   * @version v0.1.12
+   */
+  prevent?: boolean
 }
 
 export type PlusFormProps = PlusFormSelfProps & Partial<ElementPlusFormProps> & RecordType

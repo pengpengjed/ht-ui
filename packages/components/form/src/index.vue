@@ -8,7 +8,7 @@
     :label-position="labelPosition"
     :validate-on-rule-change="false"
     :label-suffix="hasLabel ? labelSuffix : ''"
-    v-bind="$attrs"
+    v-bind="attrs"
     :model="model"
     @validate="handleValidate"
   >
@@ -121,7 +121,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch, computed, useSlots, unref } from 'vue'
+import { ref, watch, computed, useSlots, unref, useAttrs, withModifiers } from 'vue'
 import type { FormInstance } from 'element-plus'
 import { ElMessage, ElForm, ElCard, ElButton, ElIcon } from 'element-plus'
 import { useLocale } from '@plus-pro-components/hooks'
@@ -132,7 +132,8 @@ import {
   getExtraSlotName,
   filterSlots,
   isArray,
-  isPlainObject
+  isPlainObject,
+  isFunction
 } from '@plus-pro-components/components/utils'
 import PlusFormContent from './form-content.vue'
 import type { PlusFormSelfProps as PlusFormProps, PlusFormEmits } from './type'
@@ -161,7 +162,8 @@ const props = withDefaults(defineProps<PlusFormProps>(), {
   rules: () => ({}),
   columns: () => [],
   group: false,
-  cardProps: () => ({})
+  cardProps: () => ({}),
+  prevent: false
 })
 const emit = defineEmits<PlusFormEmits>()
 
@@ -185,6 +187,25 @@ const subColumns = computed(() => filterHide(props.columns))
 const subGroup = computed(() =>
   isArray(props.group) ? props.group?.filter(item => unref(item.hideInGroup) !== true) : props.group
 )
+
+const originAttrs = useAttrs()
+const attrs = computed(() => ({
+  ...originAttrs,
+  ...(props.prevent
+    ? {
+        onSubmit: withModifiers(
+          (...arg: any[]) => {
+            if (originAttrs?.onSubmit && isFunction(originAttrs?.onSubmit)) {
+              // eslint-disable-next-line @typescript-eslint/no-extra-semi
+              ;(originAttrs.onSubmit as any)(...arg)
+            }
+          },
+          ['prevent']
+        )
+      }
+    : {})
+}))
+
 const slots = useSlots()
 /**
  * 表单label的插槽
