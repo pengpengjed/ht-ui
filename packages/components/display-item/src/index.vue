@@ -210,6 +210,16 @@ const falseArray = [false, 'click', 'dblclick']
 const statusValueTypes: (string | undefined)[] = ['select', 'radio', 'checkbox']
 
 watch(
+  () => props.row,
+  val => {
+    subRow.value = cloneDeep(val)
+  },
+  {
+    deep: true
+  }
+)
+
+watch(
   () => [props.editable, props.column.editable],
   () => {
     if (props.column.editable === true) {
