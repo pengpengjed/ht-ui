@@ -1,5 +1,5 @@
 import type { Ref } from 'vue'
-import { ref, isRef, watch } from 'vue'
+import { ref, isRef, watch, isReactive } from 'vue'
 import { isPromise, isFunction, isArray, toRawType } from '@plus-pro-components/components/utils'
 import type { OptionsRow, PlusColumn } from '@plus-pro-components/types'
 
@@ -21,22 +21,19 @@ export const useGetOptions = (
   if (!props.options) {
     options.value = []
     optionsIsReady.value = true
-  } else if (isRef(props.options)) {
-    // computed
+  } else if (isRef(props.options) || isReactive(props.options) || isArray(props.options)) {
+    // computed或者数组
     watch(
-      props.options,
+      () => props.options,
       val => {
-        options.value = val
+        options.value = val as OptionsRow[]
         optionsIsReady.value = true
       },
       {
-        immediate: true
+        immediate: true,
+        deep: true
       }
     )
-  } else if (isArray(props.options)) {
-    // 数组
-    options.value = [...props.options]
-    optionsIsReady.value = true
   } else if (isFunction(props.options)) {
     // 函数或Promise
     const getValue = props.options as
