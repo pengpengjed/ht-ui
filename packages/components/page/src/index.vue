@@ -64,8 +64,8 @@
           <slot name="table-toolbar" />
         </template>
 
-        <template v-if="$slots['table-expand']" #expand>
-          <slot name="table-expand" />
+        <template v-if="$slots['table-expand']" #expand="data">
+          <slot name="table-expand" v-bind="data" />
         </template>
 
         <template v-if="$slots['table-append']" #append>
