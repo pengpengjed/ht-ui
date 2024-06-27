@@ -90,7 +90,7 @@
         </el-checkbox>
         <el-checkbox-group v-model="state.checkList" @change="handleCheckGroupChange">
           <div ref="checkboxGroupInstance" class="plus-table-checkbox-sortable-list">
-            <div v-for="item in subColumns" :key="item.prop" class="plus-table-checkbox-item">
+            <div v-for="item in columns" :key="item.prop" class="plus-table-checkbox-item">
               <div v-if="columnSetting?.dragSort !== false" class="plus-table-checkbox-handle">
                 <slot name="drag-sort-icon">☷</slot>
               </div>
@@ -177,7 +177,6 @@ export interface PlusTableToolbarProps {
   titleBar?: boolean | Partial<TitleBar>
   filterTableHeaderOverflowLabelLength?: number
   defaultSize?: ComponentSize
-  changeColumns?: PlusColumn[]
 }
 export interface PlusTableToolbarEmits {
   (e: 'filterTable', columns: PlusColumn[]): void
@@ -202,8 +201,7 @@ const props = withDefaults(defineProps<PlusTableToolbarProps>(), {
   columns: () => [],
   titleBar: true,
   filterTableHeaderOverflowLabelLength: 6,
-  defaultSize: 'default',
-  changeColumns: () => []
+  defaultSize: 'default'
 })
 const emit = defineEmits<PlusTableToolbarEmits>()
 
@@ -214,6 +212,7 @@ const titleBarConfig = computed(() => props.titleBar as TitleBar)
 const iconSize = computed(() => titleBarConfig.value?.icon?.size || 18)
 const iconColor = computed(() => titleBarConfig.value?.icon?.color || '')
 const columnSetting = computed(() => titleBarConfig.value?.columnSetting as ColumnSetting)
+const sortable = ref<Sortable | null>(null)
 
 const buttonNameDensity: ButtonNameDensity[] = [
   {
@@ -229,15 +228,14 @@ const buttonNameDensity: ButtonNameDensity[] = [
     text: computed(() => t('plus.table.compact'))
   }
 ]
-const subColumns = computed(() => props.columns.filter(item => unref(item.hideInTable) !== true))
 
 const getCheckList = (hasDisabled = false) => {
   if (hasDisabled) {
-    return cloneDeep(subColumns.value)
+    return props.columns
       .filter(item => item.disabledHeaderFilter === true)
       .map(item => getTableKey(item))
   }
-  return cloneDeep(subColumns.value).map(item => getTableKey(item))
+  return props.columns.map(item => getTableKey(item))
 }
 
 const state: State = reactive({
@@ -254,15 +252,20 @@ const handleCheckAllChange = (val: CheckboxValueType) => {
 }
 
 const handleFilterTableConfirm = () => {
-  const columns = cloneDeep(subColumns.value)
-  const filterColumns = columns.filter(item => state.checkList.includes(getTableKey(item)))
+  const filterColumns = props.columns.map(item => {
+    if (state.checkList.includes(getTableKey(item))) {
+      return { ...item, __selfHideInTable: false }
+    }
+
+    return { ...item, __selfHideInTable: true }
+  })
   emit('filterTable', filterColumns)
 }
 
 const handleCheckGroupChange = (value: CheckboxValueType[]) => {
   const checkedCount = value.length
-  state.checkAll = checkedCount === subColumns.value.length
-  state.isIndeterminate = checkedCount > 0 && checkedCount < subColumns.value.length
+  state.checkAll = checkedCount === props.columns.length
+  state.isIndeterminate = checkedCount > 0 && checkedCount < props.columns.length
 
   handleFilterTableConfirm()
 }
@@ -287,6 +290,7 @@ const getLabelValue = (label?: PlusColumn['label']) => {
 // checkbox列拖拽
 const handleDrop = () => {
   if (!checkboxGroupInstance.value) return
+
   let config: SortableOptions = {
     onEnd: handleDragEnd,
     ghostClass: 'plus-table-ghost-class'
@@ -295,14 +299,20 @@ const handleDrop = () => {
   if (isPlainObject(dragSort)) {
     config = { ...config, ...(dragSort as SortableOptions), handle: '.plus-table-checkbox-handle' }
   }
-  new Sortable(checkboxGroupInstance.value as HTMLElement, config)
+  sortable.value = new Sortable(checkboxGroupInstance.value as HTMLElement, config)
 }
 const handleDragEnd = (event: SortableEvent) => {
-  const subDragCheckboxList = cloneDeep(props.changeColumns)
-  const draggedCheckbox = props.changeColumns[event.oldIndex as number]
+  const subDragCheckboxList = cloneDeep(props.columns)
+  const draggedCheckbox = props.columns[event.oldIndex as number]
   subDragCheckboxList.splice(event.oldIndex as number, 1)
   subDragCheckboxList.splice(event.newIndex as number, 0, draggedCheckbox)
-  emit('filterTable', subDragCheckboxList)
+
+  /**
+   * FIXME:
+   * filter item is undefined
+   */
+  const list = subDragCheckboxList.filter(item => item)
+  emit('filterTable', list)
 }
 
 onMounted(() => {

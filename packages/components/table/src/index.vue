@@ -2,10 +2,9 @@
   <div ref="tableWrapperInstance" class="plus-table">
     <PlusTableTitleBar
       v-if="titleBar"
-      :columns="columns"
+      :columns="filterColumns"
       :default-size="size"
       :title-bar="titleBar"
-      :change-columns="subColumns"
       @click-density="handleClickDensity"
       @filter-table="handleFilterTableConfirm"
       @refresh="handleRefresh"
@@ -198,6 +197,7 @@ import {
   filterSlots,
   isSVGElement
 } from '@plus-pro-components/components/utils'
+import { cloneDeep } from 'lodash-es'
 import PlusTableActionBar from './table-action-bar.vue'
 import PlusTableColumn from './table-column.vue'
 import PlusTableTableColumnIndex from './table-column-index.vue'
@@ -246,6 +246,7 @@ const props = withDefaults(defineProps<PlusTableProps>(), {
 const emit = defineEmits<PlusTableEmits>()
 
 const subColumns: Ref<PlusColumn[]> = ref([])
+const filterColumns: Ref<PlusColumn[]> = ref([])
 const tableInstance = shallowRef<TableInstance | null>(null)
 const tableWrapperInstance = ref<HTMLDivElement | null>(null)
 const state = reactive<PlusTableState>({
@@ -296,6 +297,7 @@ watch(
   () => props.columns,
   val => {
     subColumns.value = val.filter(item => unref(item.hideInTable) !== true)
+    filterColumns.value = cloneDeep(subColumns.value)
   },
   {
     deep: true,
@@ -317,7 +319,10 @@ const handleClickActionConfirmCancel = (callbackParams: ButtonsCallBackParams) =
 }
 
 const handleFilterTableConfirm = (_columns: PlusColumn[]) => {
-  subColumns.value = _columns.filter(item => unref(item.hideInTable) !== true)
+  filterColumns.value = _columns
+  subColumns.value = _columns.filter(
+    item => unref(item.hideInTable) !== true && item.__selfHideInTable !== true
+  )
 }
 
 // 密度
