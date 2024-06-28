@@ -4,6 +4,7 @@
       v-if="titleBar"
       :columns="filterColumns"
       :default-size="size"
+      :columns-is-change="columnsIsChange"
       :title-bar="titleBar"
       @click-density="handleClickDensity"
       @filter-table="handleFilterTableConfirm"
@@ -246,6 +247,7 @@ const props = withDefaults(defineProps<PlusTableProps>(), {
 const emit = defineEmits<PlusTableEmits>()
 
 const subColumns: Ref<PlusColumn[]> = ref([])
+const columnsIsChange: Ref<boolean> = ref(false)
 const filterColumns: Ref<PlusColumn[]> = ref([])
 const tableInstance = shallowRef<TableInstance | null>(null)
 const tableWrapperInstance = ref<HTMLDivElement | null>(null)
@@ -298,6 +300,9 @@ watch(
   val => {
     subColumns.value = val.filter(item => unref(item.hideInTable) !== true)
     filterColumns.value = cloneDeep(subColumns.value)
+    columnsIsChange.value = !columnsIsChange.value
+
+    console.log(val, 'val')
   },
   {
     deep: true,

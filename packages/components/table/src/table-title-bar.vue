@@ -153,7 +153,7 @@
 
 <script lang="ts" setup>
 import type { ComputedRef } from 'vue'
-import { reactive, computed, unref, onMounted, ref } from 'vue'
+import { reactive, computed, unref, onMounted, ref, watch } from 'vue'
 import { cloneDeep } from 'lodash-es'
 import type { PlusColumn } from '@plus-pro-components/types'
 import { Setting, RefreshRight } from '@element-plus/icons-vue'
@@ -177,6 +177,7 @@ export interface PlusTableToolbarProps {
   titleBar?: boolean | Partial<TitleBar>
   filterTableHeaderOverflowLabelLength?: number
   defaultSize?: ComponentSize
+  columnsIsChange?: boolean
 }
 export interface PlusTableToolbarEmits {
   (e: 'filterTable', columns: PlusColumn[]): void
@@ -201,7 +202,8 @@ const props = withDefaults(defineProps<PlusTableToolbarProps>(), {
   columns: () => [],
   titleBar: true,
   filterTableHeaderOverflowLabelLength: 6,
-  defaultSize: 'default'
+  defaultSize: 'default',
+  columnsIsChange: false
 })
 const emit = defineEmits<PlusTableToolbarEmits>()
 
@@ -243,11 +245,29 @@ const state: State = reactive({
   isIndeterminate: false,
   bigImageVisible: false,
   srcList: [],
-  checkList: getCheckList()
+  checkList: []
 })
+
+const setCheckAllState = (value: any[]) => {
+  const checkedCount = value.length
+  state.checkAll = checkedCount === props.columns.length
+  state.isIndeterminate = checkedCount > 0 && checkedCount < props.columns.length
+}
+
+watch(
+  () => props.columnsIsChange,
+  () => {
+    state.checkList = getCheckList()
+    setCheckAllState(state.checkList)
+  },
+  {
+    immediate: true
+  }
+)
 
 const handleCheckAllChange = (val: CheckboxValueType) => {
   state.checkList = val ? getCheckList() : getCheckList(true)
+  setCheckAllState(state.checkList)
   handleFilterTableConfirm()
 }
 
@@ -263,10 +283,7 @@ const handleFilterTableConfirm = () => {
 }
 
 const handleCheckGroupChange = (value: CheckboxValueType[]) => {
-  const checkedCount = value.length
-  state.checkAll = checkedCount === props.columns.length
-  state.isIndeterminate = checkedCount > 0 && checkedCount < props.columns.length
-
+  setCheckAllState(value)
   handleFilterTableConfirm()
 }
 
