@@ -301,8 +301,6 @@ watch(
     subColumns.value = val.filter(item => unref(item.hideInTable) !== true)
     filterColumns.value = cloneDeep(subColumns.value)
     columnsIsChange.value = !columnsIsChange.value
-
-    console.log(val, 'val')
   },
   {
     deep: true,
