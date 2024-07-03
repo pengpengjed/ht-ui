@@ -100,7 +100,7 @@ Please make sure to read the [Contributing Guide](https://plus-pro-components.gi
 
 Thank you to all the people who already contributed to plus-pro-components!
 
-<a href="https://github.com/vuejs/core/graphs/contributors"><img src="https://opencollective.com/plus-pro-components/contributors.svg?width=890" /></a>
+<a href="https://github.com/plus-pro-components/plus-pro-components/graphs/contributors"><img src="https://opencollective.com/plus-pro-components/contributors.svg?width=890" /></a>
 
 ## Donate
 

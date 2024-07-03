@@ -101,7 +101,7 @@ plus-pro-components 是一个基于 Vue 和 element-plus 的组件库，它提�
 
 感谢所有已经为 plus-pro-components 组件做出贡献的人！
 
-<a href="https://github.com/vuejs/core/graphs/contributors"><img src="https://opencollective.com/plus-pro-components/contributors.svg?width=890" /></a>
+<a href="https://github.com/plus-pro-components/plus-pro-components/graphs/contributors"><img src="https://opencollective.com/plus-pro-components/contributors.svg?width=890" /></a>
 
 ## 捐赠
 
