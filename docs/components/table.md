@@ -486,8 +486,9 @@ table/icon-slot
 | [PlusColumn](/components/config.html)[`fieldSlots`]             | 定义[PlusColumn](/components/config.html)[`valueType`]对应的组件的插槽         | 是                                                         | <el-tag>v0.0.1</el-tag>  |
 | [PlusColumn](/components/config.html)[`formatter`]              | 仅仅格式化显示的值                                                             | 是                                                         | <el-tag>v0.1.12</el-tag> |
 
-[[PlusColumn](/components/config.html)[`render`] 使用示例](/components/table.html#自定义表格项和表单项-render)
-[[PlusColumn](/components/config.html)[`fieldSlots`] 使用示例](/components/table.html#表格显示单项插槽配置)
+[PlusColumn](/components/config.html)[`render`] [使用示例](/components/table.html#自定义表格项和表单项-render)
+
+[PlusColumn](/components/config.html)[`fieldSlots`] [使用示例](/components/table.html#表格显示单项插槽配置)
 
 以下是[PlusColumn](/components/config.html)[`formatter`] 的示例
 
