@@ -1,3 +1,10 @@
+## [v0.1.13](https://github.com/plus-pro-components/plus-pro-components/compare/v0.1.12...v0.1.13) (2024-07-04)
+
+### 🐛 Bug Fixes
+
+- **components:** :bug: fix form type error([a3384fd](https://github.com/plus-pro-components/plus-pro-components/commit/a3384fd)) by@xiaofei
+- **hooks:** :bug: fix useGetOptions data error([564a1ed](https://github.com/plus-pro-components/plus-pro-components/commit/564a1ed)) by@xiaofei
+
 ## [v0.1.12](https://github.com/plus-pro-components/plus-pro-components/compare/v0.1.11...v0.1.12) (2024-07-03)
 
 ### ✨ Features
