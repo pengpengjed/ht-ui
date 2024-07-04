@@ -26,7 +26,8 @@ export const useGetOptions = (
     watch(
       () => props.options,
       val => {
-        options.value = val as OptionsRow[]
+        const value = isRef(val) ? val.value : val
+        options.value = value as OptionsRow[]
         optionsIsReady.value = true
       },
       {
