@@ -1,3 +1,20 @@
+## [v0.1.12](https://github.com/plus-pro-components/plus-pro-components/compare/v0.1.11...v0.1.12) (2024-07-03)
+
+### ✨ Features
+
+- **all:** Merge pull request [#177](https://github.com/plus-pro-components/plus-pro-components/pull/177) from IceyWu/dev([0af39ef](https://github.com/plus-pro-components/plus-pro-components/commit/0af39ef)) by@xiaofei
+- **components:** :sparkles: display-item row add responsive([f1aabdd](https://github.com/plus-pro-components/plus-pro-components/commit/f1aabdd)) by@xiaofei
+- **components:** :sparkles: form component add prevent props([438e9d6](https://github.com/plus-pro-components/plus-pro-components/commit/438e9d6)) by@xiaofei
+- **components:** :sparkles: plusColumn add formatter method support.([16c5e7c](https://github.com/plus-pro-components/plus-pro-components/commit/16c5e7c)) by@xiaofei
+- **types:** :sparkles: plusColumn add formatter type,update render and renderHTML value type([1ce3317](https://github.com/plus-pro-components/plus-pro-components/commit/1ce3317)) by@xiaofei
+
+### 🐛 Bug Fixes
+
+- **components:** :bug: fix titleBar default check error([ba401a1](https://github.com/plus-pro-components/plus-pro-components/commit/ba401a1)) by@xiaofei
+- **components:** :bug: fix table no tableData drag sort error([38a2131](https://github.com/plus-pro-components/plus-pro-components/commit/38a2131)) by@xiaofei
+- **components:** :bug: fix page component slots['table-expand'] no scope parameters([0e0a662](https://github.com/plus-pro-components/plus-pro-components/commit/0e0a662)) by@xiaofei
+- **hooks:** :bug: fix table display issues([3db51f6](https://github.com/plus-pro-components/plus-pro-components/commit/3db51f6)) by@xiaofei
+
 ## [v0.1.11](https://github.com/plus-pro-components/plus-pro-components/compare/v0.1.10...v0.1.11) (2024-06-13)
 
 ### 🐛 Bug Fixes
