@@ -136,14 +136,14 @@ import {
   isFunction
 } from '@plus-pro-components/components/utils'
 import PlusFormContent from './form-content.vue'
-import type { PlusFormSelfProps as PlusFormProps, PlusFormEmits } from './type'
+import type { PlusFormSelfProps, PlusFormEmits } from './type'
 
 defineOptions({
   name: 'PlusForm',
   inheritAttrs: false
 })
 
-const props = withDefaults(defineProps<PlusFormProps>(), {
+const props = withDefaults(defineProps<PlusFormSelfProps>(), {
   modelValue: () => ({}),
   defaultValues: () => ({}),
   labelWidth: '80px',
