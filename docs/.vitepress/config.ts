@@ -200,7 +200,7 @@ export default defineConfig({
               link: '/components/config'
             },
             {
-              text: '透传',
+              text: '事件和样式透传',
               link: '/components/attrs'
             },
             {

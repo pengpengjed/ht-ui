@@ -68,9 +68,9 @@ check-card-group/tsx
 **插槽优先级低于 render**
 :::
 
-插槽支持**整体**配置 和**个性化**配置，**整体插槽**会改变每一项，**个性化插槽**可以单独定制其中的某一项。
+插槽支持**整体**配置 和 **单项（个性化）** 配置，**整体插槽**会改变每一项，**单项（个性化）插槽**可以单独定制其中的某一项。
 
-**个性化插槽**说明：`CheckCardGroup` 组件会自动根据配置项的 `value` 生成对应的插槽，例如下面的配置项，则会自动生成以下名称叫做 [ **title-`0`** ]，[ **avatar-`0`**] ， [ **description-`0`**]，[ **title-`1`** ]，[ **avatar-`1`**] 和 [ **description-`1`**] 的插槽，插槽的生成规则就是 固定 key 值 [ **title-** ]，[ **avatar-** ] ，[ **description-** ] 然后加上 配置项的 `value`。`extra` 插槽 也是同样的逻辑 [ **extra-** ] + `value` 。
+**单项插槽**说明：`CheckCardGroup` 组件会自动根据配置项的 `value` 生成对应的插槽，例如下面的配置项，则会自动生成以下名称叫做 [ **title-`0`** ]，[ **avatar-`0`**] ， [ **description-`0`**]，[ **title-`1`** ]，[ **avatar-`1`**] 和 [ **description-`1`**] 的插槽，插槽的生成规则就是 固定 key 值 [ **title-** ]，[ **avatar-** ] ，[ **description-** ] 然后加上 配置项的 `value`。`extra` 插槽 也是同样的逻辑 [ **extra-** ] + `value` 。
 
 ```ts
 const options = [
@@ -125,5 +125,5 @@ check-card-group/slot
 
 :::tip 提示
 
-带 `-*` 表示是个性化插槽，组件会自动根据配置项的 value 生成对应的插槽
+带 `-*` 表示是单项（个性化）插槽，组件会自动根据配置项的 value 生成对应的插槽
 :::
