@@ -57,10 +57,12 @@
 </template>
 
 <script lang="ts" setup>
+  import type { VNode } from 'vue'
   import { h } from 'vue'
 
   type Item = {
     value: number
+    render: (item: Item) => VNode
   }
   const list = [
     { value: 1, render: (item: Item) => h('a', null, String(item.value)) },
