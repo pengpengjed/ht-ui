@@ -71,7 +71,7 @@ import { PlusForm } from '@plus-pro-components/components/form'
 import type { PlusFormProps, PlusFormInstance } from '@plus-pro-components/components/form'
 import type { FieldValues, Mutable, PlusColumn, RecordType } from '@plus-pro-components/types'
 import type { FormInstance, DrawerProps } from 'element-plus'
-import { ElDrawer, ElMessage } from 'element-plus'
+import { ElDrawer, ElMessage, ElButton } from 'element-plus'
 import { useLocale } from '@plus-pro-components/hooks'
 import {
   getFieldSlotName,
