@@ -7,6 +7,10 @@
 <script lang="ts" setup>
 import { ref, h, Fragment } from 'vue'
 import type { PlusColumn, FieldValues } from 'plus-pro-components'
+/**
+ * @plus-pro-components/utils 是辅助plus-pro-components的工具包，如果需要使用，需要单独安装
+ * 参考文档 https://plus-pro-components.com/api/utils/
+ */
 import { fileToDataURL } from '@plus-pro-components/utils'
 import { ElUpload, ElButton, ElImage, ElInput, ElTransfer } from 'element-plus'
 

@@ -16,6 +16,10 @@
 
 <script lang="ts" setup>
 import type { PlusColumn } from 'plus-pro-components'
+/**
+ * @plus-pro-components/utils 是辅助plus-pro-components的工具包，如果需要使用，需要单独安装
+ * 参考文档 https://plus-pro-components.com/api/utils/
+ */
 import { fileToDataURL } from '@plus-pro-components/utils'
 import type { UploadFile } from 'element-plus'
 import { ElUpload, ElButton, ElImage } from 'element-plus'
