@@ -38,7 +38,9 @@
       }"
       class="docs-example-language-vue language-vue"
     >
-      <div class="content" v-html="decoded"></div>
+      <div class="content">
+        <highlightjs language="js" :code="decoded"></highlightjs>
+      </div>
       <div class="line-numbers-wrapper">
         <template v-for="item in total" :key="item">
           <span class="line-number">
@@ -85,6 +87,8 @@ const handleToggle = () => {
 
 const decoded = computed(() => decodeURIComponent(props.source))
 const content = computed(() => decodeURIComponent(props.rawSource))
+
+console.log(decoded, 'decoded')
 
 // add line-number
 const tem = content.value.split('\r\n')

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <el-button type="primary" style="margin-bottom: 10px" @click="toggleHideInGroup"
-      >动态隐藏分组表单</el-button
-    >
+    <el-button type="primary" style="margin-bottom: 10px" @click="toggleHideInGroup">
+      动态隐藏分组表单
+    </el-button>
     <PlusForm v-model="state" :group="group" />
   </div>
 </template>

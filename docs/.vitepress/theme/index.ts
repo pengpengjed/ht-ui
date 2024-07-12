@@ -10,6 +10,9 @@ import PlusProComponents from 'plus-pro-components-main'
 import 'plus-pro-components-css'
 import 'element-plus/theme-chalk/dark/css-vars.css'
 
+import 'highlight.js/lib/common'
+import hljsVuePlugin from '@highlightjs/vue-plugin'
+
 import DocsCodeDemo from './components/docs-code-demo.vue'
 import DocsChangelog from './components/docs-changelog.vue'
 import DocsMarkdown from './components/docs-markdown.vue'
@@ -26,6 +29,8 @@ export default {
     app.use(ElementPlus, {
       locale: { ...zhCn, ...plusZhCn }
     })
+    app.component('highlightjs', hljsVuePlugin.component)
+
     app.use(PlusProComponents as unknown as any)
     app.component('DocsCodeDemo', DocsCodeDemo)
     app.component('DocsChangelog', DocsChangelog)

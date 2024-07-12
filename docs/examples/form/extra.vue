@@ -15,8 +15,8 @@
       <template #plus-extra-status="column">
         <div style="display: flex">
           <label style="width: 100px; color: #606266; margin-right: 12px">
-            没有的{{ column.label }}：</label
-          >
+            没有的{{ column.label }}：
+          </label>
           <el-input v-model="state.extra" placeholder="自定义下一行内容" />
         </div>
       </template>

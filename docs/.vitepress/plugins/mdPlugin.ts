@@ -4,7 +4,6 @@ import MarkdownIt from 'markdown-it'
 import mdContainer from 'markdown-it-container'
 import type Token from 'markdown-it/lib/token'
 import type Renderer from 'markdown-it/lib/renderer'
-import { highlight } from '../utils/highlight'
 
 const docRoot = path.resolve(__dirname, '../../')
 
@@ -32,7 +31,7 @@ export const mdPlugin = (md: MarkdownIt) => {
         if (!source) throw new Error(`Incorrect source file: ${sourceFile}`)
 
         return `<DocsCodeDemo  source="${encodeURIComponent(
-          highlight(source, 'vue')
+          source
         )}" path="${sourceFile}" raw-source="${encodeURIComponent(source)}" >`
       } else {
         return '</DocsCodeDemo>'

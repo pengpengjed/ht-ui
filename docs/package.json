@@ -17,6 +17,7 @@
   "author": "xiaofei",
   "license": "ISC",
   "devDependencies": {
+    "@highlightjs/vue-plugin": "^2.1.0",
     "@types/js-cookie": "^3.0.3",
     "@types/markdown-it": "^12.2.3",
     "@types/markdown-it-container": "^2.0.5",
