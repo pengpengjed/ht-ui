@@ -35,6 +35,7 @@ import { ElMessage } from 'element-plus'
 import type { PlusColumn, PlusTableInstance } from 'plus-pro-components'
 import { useTable } from 'plus-pro-components'
 import { ref } from 'vue'
+import { set } from 'lodash-es'
 
 interface TableRow {
   id: number
@@ -177,9 +178,12 @@ const handleDelete = () => {
   tableData.value.pop()
 }
 
-const formChange = (e: any) => {
-  console.log(e, 'formChange')
+const formChange = ({ value, prop, index }) => {
+  // 同步表单数据到表格
+  set(tableData.value[index], prop, value)
+  console.log(tableData.value, 'tableData.value')
 }
+
 const handleEditable = (_editable: boolean | 'click' | 'dblclick') => {
   editable.value = _editable
 }

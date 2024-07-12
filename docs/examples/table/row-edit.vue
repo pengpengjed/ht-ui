@@ -18,6 +18,7 @@ import type { ButtonsCallBackParams, TableFormRefRow, PlusColumn } from 'plus-pr
 import { useTable } from 'plus-pro-components'
 import { ElMessage } from 'element-plus'
 import { ref } from 'vue'
+import { set } from 'lodash-es'
 
 interface TableRow {
   id: number
@@ -206,8 +207,11 @@ const handleAdd = () => {
 const handleDelete = () => {
   tableData.value.pop()
 }
-const formChange = (data: { value: any; prop: string; row: any; index: number; column: any }) => {
-  console.log(data)
+
+const formChange = ({ value, prop, index }) => {
+  // 同步表单数据到表格
+  set(tableData.value[index], prop, value)
+  console.log(tableData.value, 'tableData.value')
 }
 
 const handleSave = async (data: ButtonsCallBackParams) => {

@@ -1,6 +1,11 @@
 <template>
   <div>
-    <PlusTable ref="plusTableInstance" :columns="tableConfig" :table-data="tableData" />
+    <PlusTable
+      ref="plusTableInstance"
+      :columns="tableConfig"
+      :table-data="tableData"
+      @formChange="formChange"
+    />
 
     <el-row class="mgt-10">
       <el-button type="primary" @click="handleAdd">新增数据</el-button>
@@ -22,6 +27,7 @@
 import type { PlusColumn, PlusTableInstance, TableFormRefRow } from 'plus-pro-components'
 import { useTable } from 'plus-pro-components'
 import { ref } from 'vue'
+import { set } from 'lodash-es'
 
 interface TableRow {
   id: number
@@ -190,6 +196,12 @@ const handleStop = (index: number, prop?: string) => {
       item.stopCellEdit()
     })
   }
+}
+
+const formChange = ({ value, prop, index }) => {
+  // 同步表单数据到表格
+  set(tableData.value[index], prop, value)
+  console.log(tableData.value, 'tableData.value')
 }
 </script>
 

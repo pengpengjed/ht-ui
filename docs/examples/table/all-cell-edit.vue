@@ -9,9 +9,6 @@
       :table-data="tableData"
       @formChange="formChange"
     >
-      <template #plus-field-name="{ row }">
-        <el-input v-model="row.name" placeholder="自定义表单" @change="handleChange" />
-      </template>
       <template #plus-extra-name> 自定义下一行内容 </template>
       <template #toolbar>
         <el-button plain size="small" @click="editTable(false)">取消编辑</el-button>
@@ -25,6 +22,7 @@
 import { useTable } from 'plus-pro-components'
 import type { PlusColumn } from 'plus-pro-components'
 import { ref } from 'vue'
+import { set } from 'lodash-es'
 
 interface TableRow {
   id: number
@@ -138,12 +136,10 @@ const handleDelete = () => {
   tableData.value.pop()
 }
 
-const formChange = (data: { value: any; prop: string; row: any; index: number; column: any }) => {
-  console.log(data)
-}
-
-const handleChange = (data: string) => {
-  console.log(data)
+const formChange = ({ value, prop, index }) => {
+  // 同步表单数据到表格
+  set(tableData.value[index], prop, value)
+  console.log(tableData.value, 'tableData.value')
 }
 
 const editTable = (isEdit: boolean) => {
