@@ -143,4 +143,4 @@ page/crud
 | `plusSearchInstance` | [PlusSearch](/components/table.html)的实例            | `object` <docs-tip content="import('plus-pro-components')['PlusSearchInstance']"></docs-tip> |
 | `plusTableInstance`  | [PlusTable](/components/table.html)的实例             | `object`<docs-tip content="import('plus-pro-components')['PlusTableInstance']"></docs-tip>   |
 | `getList`            | 获取数据方法，可以用来重新加载数据                    | `function` <docs-tip content='() => void'></docs-tip>                                        |
-| `handleRest`         | 重置搜索数据，并将 page 置为 1 ，然后重新加载 getList | `function` <docs-tip content='() => void'></docs-tip>                                        |
+| `handleReset`        | 重置搜索数据，并将 page 置为 1 ，然后重新加载 getList | `function` <docs-tip content='() => void'></docs-tip>                                        |

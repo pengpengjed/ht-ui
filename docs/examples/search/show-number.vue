@@ -6,7 +6,7 @@
       :show-number="3"
       @change="handleChange"
       @search="handleSearch"
-      @reset="handleRest"
+      @reset="handleReset"
     />
   </el-card>
 </template>
@@ -154,7 +154,7 @@ const handleChange = (values: any) => {
 const handleSearch = (values: any) => {
   console.log(values, 'search')
 }
-const handleRest = () => {
-  console.log('handleRest')
+const handleReset = () => {
+  console.log('handleReset')
 }
 </script>
