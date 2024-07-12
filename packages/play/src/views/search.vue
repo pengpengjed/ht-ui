@@ -6,7 +6,7 @@
       :show-number="4"
       @change="handleChange"
       @search="handleSearch"
-      @reset="handleRest"
+      @reset="handleReset"
       @collapse="onCollapse"
     />
   </el-card>
@@ -160,8 +160,8 @@ const handleChange = (values: any) => {
 const handleSearch = (values: any) => {
   console.log(values, 'search')
 }
-const handleRest = () => {
-  console.log('handleRest')
+const handleReset = () => {
+  console.log('handleReset')
 }
 const onCollapse = (isShowUnfold: boolean) => {
   console.log('onCollapse', isShowUnfold)

@@ -8,7 +8,7 @@
         :columns="columns"
         :search-loading="loadingStatus"
         @search="handleSearch"
-        @reset="handleRest"
+        @reset="handleReset"
       >
         <template v-if="$slots['search-footer']" #footer="data">
           <slot name="search-footer" v-bind="data" />
@@ -332,7 +332,7 @@ const handleSearch = (val: FieldValues) => {
   emit('search', values.value)
 }
 
-const handleRest = (val: FieldValues) => {
+const handleReset = (val: FieldValues) => {
   values.value = { ...val }
   pageInfo.value.page = 1
   getList()
@@ -347,6 +347,6 @@ defineExpose({
   plusSearchInstance,
   plusTableInstance,
   getList,
-  handleRest
+  handleReset
 })
 </script>
