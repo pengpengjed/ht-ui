@@ -2,6 +2,14 @@
 
 本记录只记录影响较大变更，对于一般[新功能、性能提升和问题修复](/guide/changelog.html)不在此记录。
 
+## 从 v0.1.13 迁移到 v0.1.14
+
+- [PlusPage](/components/page.html) Exposes 变更 [参考](/components/page.html#page-exposes)
+
+  `handleRest` 方法已废弃（未来会在 v0.2.0 版本中移除），请使用 `handleReset `代替。 [参考](/components/page.html#page-exposes)
+
+<el-divider />
+
 ## 从 v0.1.8 迁移到 v0.1.11
 
 - 提升了组件 TS 类型兼容性

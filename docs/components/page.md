@@ -138,9 +138,10 @@ page/crud
 
 ## Page Exposes
 
-| 名称                 | 说明                                                  | 类型                                                                                         |
-| -------------------- | ----------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `plusSearchInstance` | [PlusSearch](/components/table.html)的实例            | `object` <docs-tip content="import('plus-pro-components')['PlusSearchInstance']"></docs-tip> |
-| `plusTableInstance`  | [PlusTable](/components/table.html)的实例             | `object`<docs-tip content="import('plus-pro-components')['PlusTableInstance']"></docs-tip>   |
-| `getList`            | 获取数据方法，可以用来重新加载数据                    | `function` <docs-tip content='() => void'></docs-tip>                                        |
-| `handleReset`        | 重置搜索数据，并将 page 置为 1 ，然后重新加载 getList | `function` <docs-tip content='() => void'></docs-tip>                                        |
+| 名称                                                                                          | 说明                                                  | 类型                                                                                         |
+| --------------------------------------------------------------------------------------------- | ----------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `plusSearchInstance`                                                                          | [PlusSearch](/components/table.html)的实例            | `object` <docs-tip content="import('plus-pro-components')['PlusSearchInstance']"></docs-tip> |
+| `plusTableInstance`                                                                           | [PlusTable](/components/table.html)的实例             | `object`<docs-tip content="import('plus-pro-components')['PlusTableInstance']"></docs-tip>   |
+| `getList`                                                                                     | 获取数据方法，可以用来重新加载数据                    | `function` <docs-tip content='() => void'></docs-tip>                                        |
+| <el-text tag="del"> `handleRest` </el-text> <el-tag type="danger">deprecated v0.1.14</el-tag> | 重置搜索数据，并将 page 置为 1 ，然后重新加载 getList | `function` <docs-tip content='() => void'></docs-tip>                                        |
+| `handleReset`<el-tag>v0.1.14</el-tag>                                                         | 重置搜索数据，并将 page 置为 1 ，然后重新加载 getList | `function` <docs-tip content='() => void'></docs-tip>                                        |

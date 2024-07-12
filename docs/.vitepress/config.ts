@@ -74,6 +74,10 @@ export default defineConfig({
         link: '/donate'
       },
       {
+        text: '常见问题',
+        link: '/components/QA.html'
+      },
+      {
         text: '生态系统',
         items: [
           {
