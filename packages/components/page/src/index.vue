@@ -347,6 +347,10 @@ defineExpose({
   plusSearchInstance,
   plusTableInstance,
   getList,
-  handleReset
+  handleReset,
+  /**
+   * TODO: 将会在v0.2.0中移除
+   */
+  handleRest: handleReset
 })
 </script>
