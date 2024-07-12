@@ -11,7 +11,7 @@ import 'plus-pro-components-css'
 import 'element-plus/theme-chalk/dark/css-vars.css'
 
 import 'highlight.js/lib/common'
-import hljsVuePlugin from '@highlightjs/vue-plugin'
+import hljsVuePlugin from '@highlightjs/vue-plugin/dist/highlightjs-vue.esm.min.js'
 
 import DocsCodeDemo from './components/docs-code-demo.vue'
 import DocsChangelog from './components/docs-changelog.vue'
