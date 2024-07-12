@@ -132,7 +132,7 @@ import { PlusTable } from '@plus-pro-components/components/table'
 import type { PlusPaginationProps } from '@plus-pro-components/components/pagination'
 import { h, ref, useSlots, computed } from 'vue'
 import type { CardProps } from 'element-plus'
-import { ElCard } from 'element-plus'
+import { ElCard, ElDivider } from 'element-plus'
 import { useTable } from '@plus-pro-components/hooks'
 import {
   getTableCellSlotName,
