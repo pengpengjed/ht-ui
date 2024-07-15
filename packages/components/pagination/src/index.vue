@@ -24,25 +24,13 @@ import { ref, watchEffect } from 'vue'
 import { DefaultPageSizeList, DefaultPageInfo } from '@plus-pro-components/constants'
 import { ElPagination } from 'element-plus'
 import type { PageInfo } from '@plus-pro-components/types'
-
-export interface PlusPaginationProps {
-  modelValue?: PageInfo
-  total?: number
-  pageSizeList?: number[]
-  align?: 'left' | 'right'
-}
-export interface PlusPaginationEmits {
-  (e: 'update:modelValue', pageInfo: PageInfo): void
-  (e: 'change', pageInfo: PageInfo): void
-  (e: 'size-change', value: number): void
-  (e: 'current-change', value: number): void
-}
+import type { PlusPaginationSelfProps, PlusPaginationEmits } from './type'
 
 defineOptions({
   name: 'PlusPagination'
 })
 
-const props = withDefaults(defineProps<PlusPaginationProps>(), {
+const props = withDefaults(defineProps<PlusPaginationSelfProps>(), {
   total: 0,
   pageSizeList: () => [...DefaultPageSizeList],
   modelValue: () => ({ ...DefaultPageInfo }),
