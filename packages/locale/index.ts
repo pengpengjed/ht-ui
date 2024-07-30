@@ -1,6 +1,7 @@
 export { default as en } from './lang/en'
 export { default as zhCn } from './lang/zh-cn'
 export { default as ja } from './lang/ja'
+export { default as ko } from './lang/ko'
 
 export type Translate = {
   [key: string]: string | string[] | Translate
