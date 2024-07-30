@@ -357,7 +357,8 @@ const setValue = (val: FieldValueType) => {
       state.value = []
     }
   } else if (isNumberValue.value) {
-    state.value = Number(val)
+    // input-number default value
+    state.value = val === null || val === void 0 || val === '' ? null : val
   } else if (isDate(val)) {
     state.value = String(val)
   } else {
