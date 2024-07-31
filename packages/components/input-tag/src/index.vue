@@ -3,7 +3,10 @@
     ref="plusInputTagInstance"
     v-click-outside="onClickOutside"
     class="plus-input-tag"
-    :class="{ 'is-focus': state.isFocus }"
+    :class="{
+      'is-focus': state.isFocus,
+      'is-disabled': formDisabled
+    }"
     @click="handleClick"
   >
     <el-tag
@@ -23,7 +26,7 @@
       v-model="state.inputValue"
       class="plus-input-tag__input"
       :placeholder="state.tags.length ? '' : t('plus.inputTag.placeholder')"
-      :disabled="state.tags.length >= limit"
+      :disabled="formDisabled || state.tags.length >= limit"
       v-bind="inputProps"
       clearable
       @blur="handle($event, 'blur')"
@@ -35,7 +38,7 @@
 
 <script lang="ts" setup>
 import type { InputProps, TagProps, InputInstance, TagInstance } from 'element-plus'
-import { ElTag, ElInput, ClickOutside as vClickOutside } from 'element-plus'
+import { ElTag, ElInput, ClickOutside as vClickOutside, useFormDisabled } from 'element-plus'
 import { reactive, ref, watch } from 'vue'
 import type { Mutable } from '@plus-pro-components/types'
 import { useLocale } from '@plus-pro-components/hooks'
@@ -50,6 +53,10 @@ export interface PlusInputTagProps {
   limit?: number
   formatTag?: (tag: string) => string
   retainInputValue?: boolean
+  /**
+   * @version 0.1.14
+   */
+  disabled?: boolean
 }
 export interface PlusInputTagEmits {
   (e: 'update:modelValue', data: string[]): void
@@ -76,6 +83,7 @@ const props = withDefaults(defineProps<PlusInputTagProps>(), {
   limit: Infinity,
   inputProps: () => ({}),
   tagProps: () => ({}),
+  disabled: false,
   formatTag: undefined,
   retainInputValue: false
 })
@@ -89,6 +97,7 @@ const state = reactive<PlusInputTagState>({
   inputValue: '',
   isFocus: false
 })
+const formDisabled = useFormDisabled()
 const { t } = useLocale()
 
 watch(
@@ -109,6 +118,8 @@ const handleClick = () => {
 }
 
 const handleClose = (tag: string) => {
+  if (formDisabled.value) return
+
   state.tags = state.tags.filter(item => item !== tag)
   emit('remove', tag)
   emit('update:modelValue', state.tags)

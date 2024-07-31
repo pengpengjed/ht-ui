@@ -3,7 +3,8 @@
     v-click-outside="onClickOutside"
     class="plus-date-picker"
     :class="{
-      'is-focus': isFocus
+      'is-focus': isFocus,
+      'is-disabled': formDisabled
     }"
   >
     <el-date-picker
@@ -15,6 +16,7 @@
       :disabled-date="subStartDisabledDate"
       class="plus-date-picker__start"
       clearable
+      :disabled="formDisabled"
       v-bind="computedStartProps"
       @change="handleChange"
       @focus="handleFocus"
@@ -29,6 +31,7 @@
       :disabled-date="subEndDisabledDate"
       class="plus-date-picker__end"
       clearable
+      :disabled="formDisabled"
       v-bind="computedEndProps"
       @change="handleChange"
       @focus="handleFocus"
@@ -39,7 +42,7 @@
 <script setup lang="ts">
 import { reactive, watch, ref, useAttrs, computed } from 'vue'
 import type { DatePickerProps } from 'element-plus'
-import { ElDatePicker, ClickOutside as vClickOutside } from 'element-plus'
+import { ElDatePicker, ClickOutside as vClickOutside, useFormDisabled } from 'element-plus'
 import { isFunction } from '@plus-pro-components/components/utils'
 import { useLocale } from '@plus-pro-components/hooks'
 
@@ -50,6 +53,10 @@ export interface PlusDatePickerProps {
   type?: 'year' | 'month' | 'date' | 'dates' | 'datetime' | 'week'
   startProps?: Partial<DatePickerProps>
   endProps?: Partial<DatePickerProps>
+  /**
+   * @version 0.1.14
+   */
+  disabled?: boolean
   startDisabledDate?: (startTime: Date, endValue: string) => boolean
   endDisabledDate?: (endTime: Date, startValue: string) => boolean
 }
@@ -74,6 +81,7 @@ const props = withDefaults(defineProps<PlusDatePickerProps>(), {
   valueFormat: 'YYYY-MM-DD HH:mm:ss',
   startProps: () => ({}),
   endProps: () => ({}),
+  disabled: false,
   startDisabledDate: (startTime, endValue) => {
     if (!endValue) return false
     return startTime.getTime() > new Date(endValue).getTime()
@@ -95,6 +103,7 @@ const state: DatePickerState = reactive({
   start: '',
   end: ''
 })
+const formDisabled = useFormDisabled()
 const isFocus = ref(false)
 
 const handleFocus = (event: FocusEvent) => {
