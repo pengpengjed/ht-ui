@@ -52,7 +52,7 @@ const state = ref<FieldValues>({
   input: '单行文本',
   textarea: '多行文本',
   'input-number': 4,
-  rate: '3',
+  rate: 3,
   switch: true,
   radio: '0',
   slider: 50,
