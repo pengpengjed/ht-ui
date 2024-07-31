@@ -46,5 +46,7 @@ export const buildLocaleContext = (locale: MaybeRef<Language>): LocaleContext =>
 export const useLocale = (localeOverrides?: Ref<Language | undefined>) => {
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const locale = localeOverrides || inject(localeContextKey, ref())!
-  return buildLocaleContext(computed(() => locale.value || English) as any)
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  return buildLocaleContext(computed(() => (locale.value?.plus ? locale.value : English)) as any)
 }
