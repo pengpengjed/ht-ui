@@ -78,7 +78,7 @@
   "style": "index.css",
   "sideEffects": [
     "locale/*",
-    "index.*",
+    "index.css",
     "theme-chalk/**/*.css",
     "theme-chalk/src/**/*.scss",
     "es/components/*/style/*",
