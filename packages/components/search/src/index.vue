@@ -4,6 +4,7 @@
     v-bind="$attrs"
     v-model="values"
     :inline="inline"
+    :label-position="labelPosition"
     :row-props="rowProps"
     :col-props="colProps"
     :columns="subColumns"
@@ -32,7 +33,11 @@
     </template>
 
     <template #search-footer>
-      <el-form-item v-if="hasFooter" class="plus-search__button__wrapper">
+      <el-form-item
+        v-if="hasFooter"
+        class="plus-search__button__wrapper"
+        :label="labelPosition === 'top' ? 'placeholder' : ''"
+      >
         <slot
           name="footer"
           :is-show-unfold="isShowUnfold"
@@ -99,6 +104,7 @@ const props = withDefaults(defineProps<PlusSearchProps>(), {
   resetText: '',
   inline: true,
   showNumber: 2,
+  labelPosition: undefined,
   columns: () => [],
   rowProps: () => ({
     gutter: 20

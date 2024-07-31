@@ -15,6 +15,7 @@ export type PlusSearchSelfProps = {
   searchLoading?: boolean
   inline?: boolean
   showNumber?: number
+  labelPosition?: 'left' | 'right' | 'top'
   rowProps?: Partial<Mutable<RowProps>>
   colProps?: Partial<Mutable<ColProps>>
 }
