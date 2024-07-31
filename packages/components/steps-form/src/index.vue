@@ -32,9 +32,11 @@
       v-bind="data[active - 1].form"
       :has-reset="active !== 1"
       :submit-text="
-        active === data.length ? t('plus.stepsForm.submitText') : t('plus.stepsForm.nextText')
+        active === data.length
+          ? submitText || t('plus.stepsForm.submitText')
+          : nextText || t('plus.stepsForm.nextText')
       "
-      :reset-text="t('plus.stepsForm.preText')"
+      :reset-text="preText || t('plus.stepsForm.preText')"
       @submit="next"
       @reset="pre"
       @change="handleChange"
@@ -51,8 +53,34 @@ import { PlusForm } from '@plus-pro-components/components/form'
 import type { PlusStepFromRow } from './type'
 
 export interface PlusStepsFormProps {
-  modelValue: number
-  data: PlusStepFromRow[]
+  /**
+   *
+   * @version 0.1.14  变更为可选
+   */
+  modelValue?: number
+  /**
+   * 数据
+   * @version 0.1.14  变更为可选
+   */
+  data?: PlusStepFromRow[]
+  /**
+   * 提交按钮文字
+   * @version 0.1.14
+   * @default 提交
+   */
+  submitText?: string
+  /**
+   * 下一步按钮文字
+   * @version 0.1.14
+   * @default 下一步
+   */
+  nextText?: string
+  /**
+   * 上一步按钮文字
+   * @version 0.1.14
+   * @default 上一步
+   */
+  preText?: string
 }
 export interface PlusStepsFormEmits {
   (e: 'pre', modelValue: number): void
@@ -67,7 +95,10 @@ defineOptions({
 
 const props = withDefaults(defineProps<PlusStepsFormProps>(), {
   modelValue: 1,
-  data: () => []
+  data: () => [],
+  submitText: undefined,
+  nextText: undefined,
+  preText: undefined
 })
 
 const emit = defineEmits<PlusStepsFormEmits>()
