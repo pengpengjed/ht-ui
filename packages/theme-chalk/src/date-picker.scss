@@ -19,6 +19,13 @@
     border-color: getCssVar('color-primary');
   }
 
+  &.is-disabled {
+    background-color: getCssVar('disabled-bg-color');
+    &:hover {
+      border-color: getCssVar('border-color');
+    }
+  }
+
   @include e(middle) {
     color: getCssVar('text-color-placeholder');
   }
@@ -26,6 +33,13 @@
   @include e(start) {
     font-size: 14px;
     flex: 1;
+
+    &.is-disabled {
+      .#{$el-namespace + -input__wrapper } {
+        box-shadow: none;
+      }
+    }
+
     @include elb(input__wrapper) {
       border: none;
       box-shadow: none;
@@ -48,6 +62,13 @@
   @include e(end) {
     font-size: 14px;
     flex: 1;
+
+    &.is-disabled {
+      .#{$el-namespace + -input__wrapper } {
+        box-shadow: none;
+      }
+    }
+
     @include elb(input__wrapper) {
       border: none;
       box-shadow: none;
