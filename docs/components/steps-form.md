@@ -55,11 +55,14 @@ steps-form/slots
 
 ## StepsForm Attributes
 
-| 名称                    | 说明                   | 类型                                                         | 默认值 | 是否必须 |
-| ----------------------- | ---------------------- | ------------------------------------------------------------ | ------ | -------- |
-| `model-value / v-model` | 分步表单绑定的第几步值 | `number`                                                     | `1`    | 是       |
-| `data`                  | 分步表单展示的数据     | `array` [PlusStepFrom[]](/components/type.html#plusstepfrom) | `[]`   | 是       |
-| ...                     | ...                    | ...                                                          | ...    | ...      |
+| 名称                                  | 说明                   | 类型                                                         | 默认值   | 是否必须                                      |
+| ------------------------------------- | ---------------------- | ------------------------------------------------------------ | -------- | --------------------------------------------- |
+| `model-value / v-model`               | 分步表单绑定的第几步值 | `number`                                                     | `1`      | 否 (<el-tag>v0.1.14</el-tag> 版本前是 `必须`) |
+| `data`                                | 分步表单展示的数据     | `array` [PlusStepFrom[]](/components/type.html#plusstepfrom) | `[]`     | 否 (<el-tag>v0.1.14</el-tag> 版本前是 `必须`) |
+| `submitText` <el-tag>v0.1.14</el-tag> | 提交按钮文字           | `string`                                                     | `提交`   | 否                                            |
+| `nextText` <el-tag>v0.1.14</el-tag>   | 下一步按钮文字         | `string`                                                     | `下一步` | 否                                            |
+| `preText` <el-tag>v0.1.14</el-tag>    | 上一步按钮文字         | `string`                                                     | `上一步` | 否                                            |
+| ...                                   | ...                    | ...                                                          | ...      | ...                                           |
 
 `...`表示同时支持所有 [ElSteps Attributes](https://element-plus.org/zh-CN/component/steps.html#steps-%E5%B1%9E%E6%80%A7)
 
