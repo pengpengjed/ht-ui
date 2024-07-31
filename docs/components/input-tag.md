@@ -48,6 +48,7 @@ input-tag/trigger
 | `retainInputValue`<el-tag>v0.0.3</el-tag> | 是否保留输入框的内容                                                               | `boolean`                                                          | `false`                      | 否       |
 | `tagProps`                                | [ElTag](https://element-plus.org/zh-CN/component/tag.html#tag-attributes) 的 props | `object`                                                           |                              | 否       |
 | `inputProps`                              | [ElInput](https://element-plus.org/zh-CN/component/input.html) 的 props            | `object`                                                           |                              | 否       |
+| `disabled` <el-tag>v0.1.14</el-tag>       | 禁用                                                                               | `boolean`                                                          | `false`                      | 否       |
 
 ## InputTag Events
 
