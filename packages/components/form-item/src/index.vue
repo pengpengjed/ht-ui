@@ -358,7 +358,12 @@ const setValue = (val: FieldValueType) => {
     }
   } else if (isNumberValue.value) {
     // input-number default value
-    state.value = val === null || val === void 0 || val === '' ? null : val
+    state.value =
+      val === null || val === void 0 || val === ''
+        ? null
+        : typeof val === 'string'
+        ? Number(val)
+        : val
   } else if (isDate(val)) {
     state.value = String(val)
   } else {
