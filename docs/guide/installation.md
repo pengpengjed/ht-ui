@@ -8,7 +8,7 @@
 
 ### 版本
 
-`PlusProComponents` 目前还处于快速开发迭代中。
+`PlusProComponents` 目前处于功能稳定阶段。
 
 [![ElementPlus version badge](https://img.shields.io/npm/v/plus-pro-components.svg?style=flat-square)](https://www.npmjs.org/package/plus-pro-components)
 

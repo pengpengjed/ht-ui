@@ -18,7 +18,7 @@
   <!-- 报错的组件 -->
 </template>
 
-<script setup>
+<script lang="ts" setup>
   // @ts-ignore
   // 报错的行
 </script>
