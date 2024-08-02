@@ -1,3 +1,33 @@
+## [v0.1.14](https://github.com/plus-pro-components/plus-pro-components/compare/v0.1.13...v0.1.14) (2024-08-01)
+
+### ✨ Features
+
+- **components:** :sparkles: form-item compatible with string numbers([83b1c83](https://github.com/plus-pro-components/plus-pro-components/commit/83b1c83)) by@xiaofei
+- **theme-chalk:** :sparkles: input-tag and date-picker add disabled style.([1bf9767](https://github.com/plus-pro-components/plus-pro-components/commit/1bf9767)) by@xiaofei
+- **components:** :sparkles: input-tag and date-picker add disabled props.([422a2b6](https://github.com/plus-pro-components/plus-pro-components/commit/422a2b6)) by@xiaofei
+- **components:** :sparkles: steps-form add submitText,nextText and preText props.([55adfee](https://github.com/plus-pro-components/plus-pro-components/commit/55adfee)) by@xiaofei
+- **all:** Merge pull request [#191](https://github.com/plus-pro-components/plus-pro-components/pull/191) from xiaoxian521/lang-ko([8295f83](https://github.com/plus-pro-components/plus-pro-components/commit/8295f83)) by@xiaofei
+- **all:** Merge branch 'dev' into lang-ko([001deb8](https://github.com/plus-pro-components/plus-pro-components/commit/001deb8)) by@xiaoming
+- **all:** Merge pull request [#190](https://github.com/plus-pro-components/plus-pro-components/pull/190) from xiaoxian521/lang([630a6d3](https://github.com/plus-pro-components/plus-pro-components/commit/630a6d3)) by@xiaofei
+- **all:** 添加韩语`（ko）`语言包([25a0ddd](https://github.com/plus-pro-components/plus-pro-components/commit/25a0ddd)) by@xiaoxian521
+- **all:** 添加繁体中文`（zh-tw）`语言包([213f672](https://github.com/plus-pro-components/plus-pro-components/commit/213f672)) by@xiaoxian521
+- **components:** :sparkles: page handleReset add transition plan([49165ad](https://github.com/plus-pro-components/plus-pro-components/commit/49165ad)) by@xiaofei
+- **all:** Merge pull request [#180](https://github.com/plus-pro-components/plus-pro-components/pull/180) from gltjk/fix-handRest-spelling([16675b0](https://github.com/plus-pro-components/plus-pro-components/commit/16675b0)) by@fn(callback)
+
+### ⚡ Performance Improvements
+
+- **theme-chalk:** :zap: optimize the instability of search components when label position is top([407ea1f](https://github.com/plus-pro-components/plus-pro-components/commit/407ea1f)) by@xiaofei
+- **components:** :zap: optimize the instability of search components when label position is top([c8628d2](https://github.com/plus-pro-components/plus-pro-components/commit/c8628d2)) by@xiaofei
+- **components:** :zap: perfect PlusPaginationProps type([4363196](https://github.com/plus-pro-components/plus-pro-components/commit/4363196)) by@xiaofei
+
+### 🐛 Bug Fixes
+
+- **hooks:** :bug: improve the fault tolerance of internationalization estimation([4bffb71](https://github.com/plus-pro-components/plus-pro-components/commit/4bffb71)) by@xiaofei
+- **plus-pro-components:** :bug: fix sideEffects error ,tree-shaking error.([8fc1798](https://github.com/plus-pro-components/plus-pro-components/commit/8fc1798)) by@xiaofei
+- **components:** :bug: fix input-number default value is null but show 0([25d4452](https://github.com/plus-pro-components/plus-pro-components/commit/25d4452)) by@xiaofei
+- **components:** :bug: fix PplusPage Failed to resolve component: el-divider([868ccbb](https://github.com/plus-pro-components/plus-pro-components/commit/868ccbb)) by@xiaofei
+- **components:** :bug: plusDrawerForm el-button not render in auto import.([e786632](https://github.com/plus-pro-components/plus-pro-components/commit/e786632)) by@xiaofei
+
 ## [v0.1.13](https://github.com/plus-pro-components/plus-pro-components/compare/v0.1.12...v0.1.13) (2024-07-04)
 
 ### 🐛 Bug Fixes
