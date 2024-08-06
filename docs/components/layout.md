@@ -16,11 +16,16 @@ layout/basic
 
 ## Layout Attributes
 
-| 名称              | 说明                    | 类型                                                                          | 默认值 | 是否必须 |
-| ----------------- | ----------------------- | ----------------------------------------------------------------------------- | ------ | -------- |
-| `breadcrumbProps` | PlusBreadcrumb 的 props | `object` [PlusBreadcrumb ](/components/breadcrumb.html#breadcrumb-attributes) |        | 否       |
-| `headerProps`     | PlusHeader 的 props     | `object`[PlusHeader ](/components/header.html#header-attributes)              |        | 否       |
-| `sidebarProps`    | PlusSidebar 的 props    | `object`[PlusSidebar ](/components/sidebar.html#sidebar-attributes)           |        | 否       |
+| 名称                                    | 说明                    | 类型                                                                                                     | 默认值          | 是否必须 |
+| --------------------------------------- | ----------------------- | -------------------------------------------------------------------------------------------------------- | --------------- | -------- |
+| `breadcrumbProps`                       | PlusBreadcrumb 的 props | `object` [PlusBreadcrumb ](/components/breadcrumb.html#breadcrumb-attributes)                            |                 | 否       |
+| `headerProps`                           | PlusHeader 的 props     | `object`[PlusHeader ](/components/header.html#header-attributes)                                         |                 | 否       |
+| `sidebarProps`                          | PlusSidebar 的 props    | `object`[PlusSidebar ](/components/sidebar.html#sidebar-attributes)                                      |                 | 否       |
+| `scrollbarProps`                        | scrollbar 的 props      | `false` \/ `object`[ScrollbarProps ](https://element-plus.org/zh-CN/component/scrollbar.html#attributes) | `{always:true}` | 否       |
+| `backtop`                               | backtop 的 props        | `false` \/ `object`[BacktopProps ](https://element-plus.org/zh-CN/component/backtop.html#attributes)     | `true`          | 否       |
+| `hasSidebar`<el-tag>v0.1.15</el-tag>    | 是否需要侧边栏          | `boolean`                                                                                                | `true`          | 否       |
+| `hasHeader`<el-tag>v0.1.15</el-tag>     | 是否需要页头            | `boolean`                                                                                                | `true`          | 否       |
+| `hasBreadcrumb`<el-tag>v0.1.15</el-tag> | 是否需要面包屑          | `boolean`                                                                                                | `true`          | 否       |
 
 ::: tip 提示
 子组件事件写法示例
