@@ -1,7 +1,7 @@
 <template>
-  <el-container class="plus-layout">
+  <el-container class="plus-layout" :style="!hasHeader ? '--plus-header-height: 0px' : void 0">
     <!-- 头部 -->
-    <PlusHeader v-bind="headerProps">
+    <PlusHeader v-if="hasHeader" v-bind="headerProps">
       <!-- 左侧插槽 -->
       <template v-if="$slots['header-left']" #header-left="data">
         <slot name="header-left" v-bind="data" />
@@ -15,7 +15,7 @@
 
     <el-container>
       <!-- 侧边栏 -->
-      <PlusSidebar v-bind="sidebarProps" ref="plusSidebarInstance">
+      <PlusSidebar v-if="hasSidebar" v-bind="sidebarProps" ref="plusSidebarInstance">
         <!-- 菜单头插槽 -->
         <template v-if="$slots['sidebar-extra']" #sidebar-extra="data">
           <slot name="sidebar-extra" v-bind="data" />
@@ -46,7 +46,7 @@
           </template>
 
           <!-- 面包屑 -->
-          <PlusBreadcrumb v-bind="breadcrumbProps">
+          <PlusBreadcrumb v-if="hasBreadcrumb" v-bind="breadcrumbProps">
             <!-- 面包屑title 插槽 -->
             <template v-if="$slots['breadcrumb-item-title']" #breadcrumb-item-title="data">
               <slot name="breadcrumb-item-title" v-bind="data" />
@@ -81,6 +81,18 @@ import type { Component } from 'vue'
 import { ref, computed } from 'vue'
 
 export interface PlusLayoutProps {
+  /**
+   * @version v0.1.15
+   */
+  hasSidebar?: boolean
+  /**
+   * @version v0.1.15
+   */
+  hasHeader?: boolean
+  /**
+   * @version v0.1.15
+   */
+  hasBreadcrumb?: boolean
   sidebarProps?: PlusSidebarProps
   headerProps?: PlusHeaderProps
   breadcrumbProps?: PlusBreadcrumbProps
@@ -93,6 +105,9 @@ defineOptions({
 })
 
 const props = withDefaults(defineProps<PlusLayoutProps>(), {
+  hasSidebar: true,
+  hasHeader: true,
+  hasBreadcrumb: true,
   sidebarProps: undefined,
   headerProps: undefined,
   breadcrumbProps: undefined,
