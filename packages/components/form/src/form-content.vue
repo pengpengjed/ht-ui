@@ -114,8 +114,6 @@ const props = withDefaults(defineProps<PlusFormContentProps>(), {
 })
 const emit = defineEmits<PlusFormContentEmits>()
 
-console.log(props, 'props-props')
-
 const values = ref<FieldValues>({})
 
 const getHasLabel = (hasLabel?: boolean | Ref<boolean> | ComputedRef<boolean>) => {
