@@ -54,20 +54,48 @@
     v-else-if="statusValueTypes.includes(column.valueType)"
     class="plus-display-item plus-display-item__badge"
     v-bind="customFieldProps"
+    :class="{ 'is-list': isArray(getStatus) }"
   >
-    <span
-      v-if="getStatus.color || getStatus.type"
-      :class="[
-        'plus-display-item__badge__dot',
-        getStatus.type && !getStatus.color ? 'plus-display-item__badge__dot--' + getStatus.type : ''
-      ]"
-      :style="{ backgroundColor: getStatus.color }"
-    />
-    {{
-      column.formatter && isFunction(column.formatter)
-        ? column.formatter(displayValue, renderParams)
-        : getStatus.label
-    }}
+    <!-- 多选 -->
+    <template v-if="isArray(getStatus)">
+      <template v-if="isFunction(column.formatter)">
+        {{ column.formatter(displayValue, renderParams) }}
+      </template>
+
+      <template v-else>
+        <template v-for="item in getStatus" :key="String(item.value)">
+          <span class="plus-display-item__badge__item">
+            <i
+              :class="[
+                'plus-display-item__badge__dot',
+                item.type && !item.color ? 'plus-display-item__badge__dot--' + item.type : ''
+              ]"
+              :style="{ backgroundColor: item.color }"
+            />
+            {{ item.label }}
+          </span>
+        </template>
+      </template>
+    </template>
+
+    <!-- 单选 -->
+    <template v-else>
+      <i
+        v-if="getStatus.color || getStatus.type"
+        :class="[
+          'plus-display-item__badge__dot',
+          getStatus.type && !getStatus.color
+            ? 'plus-display-item__badge__dot--' + getStatus.type
+            : ''
+        ]"
+        :style="{ backgroundColor: getStatus.color }"
+      />
+      {{
+        isFunction(column.formatter)
+          ? column.formatter(displayValue, renderParams)
+          : getStatus.label
+      }}
+    </template>
   </span>
 
   <!-- 复制 -->
@@ -168,7 +196,8 @@ import type {
   PlusColumn,
   RecordType,
   FieldValueType,
-  FieldValues
+  FieldValues,
+  OptionsRow
 } from '@plus-pro-components/types'
 import { useGetOptions } from '@plus-pro-components/hooks'
 import { PlusRender } from '@plus-pro-components/components/render'
@@ -331,17 +360,32 @@ const imageUrl = computed(() => {
 })
 
 const getStatus = computed(() => {
-  let option = options.value?.find(i => i.value === displayValue.value)
+  // 自定义
   if (props.column?.customGetStatus && isFunction(props.column?.customGetStatus)) {
-    option = props.column?.customGetStatus({
+    const option = props.column?.customGetStatus({
       options: options.value,
       value: displayValue.value,
       row: subRow.value
     })
+
+    return option
   }
-  if (!option) {
-    return { label: '', value: '' }
+
+  if (
+    // select 多选
+    (props.column.valueType === 'select' && customFieldProps.value.multiple === true) ||
+    // checkbox
+    props.column.valueType === 'checkbox'
+  ) {
+    const option = options.value?.filter(i => displayValue.value?.includes(i.value)) || []
+    return option
   }
+
+  // 单选
+  const option: OptionsRow | OptionsRow[] | undefined = options.value?.find(
+    i => i.value === displayValue.value
+  ) || { label: '', value: '' }
+
   return option
 })
 

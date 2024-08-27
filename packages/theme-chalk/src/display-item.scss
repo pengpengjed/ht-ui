@@ -31,6 +31,15 @@
     width: unset;
   }
   @include e(badge, true) {
+    &.is-list {
+      .#{$plus-namespace
+        + -display-item__badge__item}
+        + .#{$plus-namespace
+        + -display-item__badge__item} {
+        padding-left: 8px;
+      }
+    }
+
     @include e(badge__dot) {
       position: relative;
       top: -1px;
