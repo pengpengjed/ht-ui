@@ -1,46 +1,57 @@
 <template>
   <el-row v-bind="rowProps" class="plus-form__row">
-    <el-col v-for="item in columns" :key="item.prop" v-bind="item.colProps || colProps">
-      <PlusFormItem
-        :model-value="getModelValue(item.prop)"
-        v-bind="item"
-        :has-label="getHasLabel(item.hasLabel)"
-        @change="value => handleChange(value, item)"
-      >
-        <!--表单项label插槽 -->
-        <template v-if="$slots[getLabelSlotName(item.prop)]" #[getLabelSlotName(item.prop)]="data">
-          <slot :name="getLabelSlotName(item.prop)" v-bind="data" />
-        </template>
-
-        <!--表单项插槽 -->
-        <template v-if="$slots[getFieldSlotName(item.prop)]" #[getFieldSlotName(item.prop)]="data">
-          <slot :name="getFieldSlotName(item.prop)" v-bind="data" />
-        </template>
-
-        <!--表单tooltip插槽 -->
-        <template v-if="$slots['tooltip-icon']" #tooltip-icon>
-          <slot name="tooltip-icon" />
-        </template>
-      </PlusFormItem>
-
-      <!-- el-form-item 下一行额外的内容 -->
-      <div
-        v-if="item.renderExtra || $slots[getExtraSlotName(item.prop)]"
-        class="plus-form-item-extra"
-      >
-        <component
-          :is="item.renderExtra"
-          v-if="item.renderExtra && isFunction(item.renderExtra)"
+    <PlusCollapseTransition
+      :collapse-duration="collapseDuration"
+      :collapse-transition="collapseTransition"
+    >
+      <el-col v-for="item in columns" :key="item.prop" v-bind="item.colProps || colProps">
+        <PlusFormItem
+          :model-value="getModelValue(item.prop)"
           v-bind="item"
-        />
+          :has-label="getHasLabel(item.hasLabel)"
+          @change="value => handleChange(value, item)"
+        >
+          <!--表单项label插槽 -->
+          <template
+            v-if="$slots[getLabelSlotName(item.prop)]"
+            #[getLabelSlotName(item.prop)]="data"
+          >
+            <slot :name="getLabelSlotName(item.prop)" v-bind="data" />
+          </template>
 
-        <slot
-          v-else-if="$slots[getExtraSlotName(item.prop)]"
-          :name="getExtraSlotName(item.prop)"
-          v-bind="item"
-        />
-      </div>
-    </el-col>
+          <!--表单项插槽 -->
+          <template
+            v-if="$slots[getFieldSlotName(item.prop)]"
+            #[getFieldSlotName(item.prop)]="data"
+          >
+            <slot :name="getFieldSlotName(item.prop)" v-bind="data" />
+          </template>
+
+          <!--表单tooltip插槽 -->
+          <template v-if="$slots['tooltip-icon']" #tooltip-icon>
+            <slot name="tooltip-icon" />
+          </template>
+        </PlusFormItem>
+
+        <!-- el-form-item 下一行额外的内容 -->
+        <div
+          v-if="item.renderExtra || $slots[getExtraSlotName(item.prop)]"
+          class="plus-form-item-extra"
+        >
+          <component
+            :is="item.renderExtra"
+            v-if="item.renderExtra && isFunction(item.renderExtra)"
+            v-bind="item"
+          />
+
+          <slot
+            v-else-if="$slots[getExtraSlotName(item.prop)]"
+            :name="getExtraSlotName(item.prop)"
+            v-bind="item"
+          />
+        </div>
+      </el-col>
+    </PlusCollapseTransition>
 
     <!-- 搜索的footer插槽  -->
     <slot name="search-footer" />
@@ -63,6 +74,7 @@ import {
   setValue,
   isBoolean
 } from '@plus-pro-components/components/utils'
+import PlusCollapseTransition from './collapse-transition.vue'
 
 export interface PlusFormContentProps {
   modelValue?: FieldValues
@@ -70,6 +82,16 @@ export interface PlusFormContentProps {
   columns?: PlusColumn[]
   rowProps?: Partial<Mutable<RowProps>>
   colProps?: Partial<Mutable<ColProps>>
+  /**
+   * @desc 动画时长
+   * @version v0.1.15
+   */
+  collapseDuration?: number
+  /**
+   * @desc 是否开启折叠动画
+   * @version v0.1.15
+   */
+  collapseTransition?: boolean
 }
 
 export interface PlusFormContentEmits {
@@ -86,9 +108,13 @@ const props = withDefaults(defineProps<PlusFormContentProps>(), {
   hasLabel: true,
   rowProps: () => ({}),
   colProps: () => ({}),
-  columns: () => []
+  columns: () => [],
+  collapseDuration: undefined,
+  collapseTransition: undefined
 })
 const emit = defineEmits<PlusFormContentEmits>()
+
+console.log(props, 'props-props')
 
 const values = ref<FieldValues>({})
 
