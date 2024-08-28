@@ -2,7 +2,7 @@
 
 本记录只记录影响较大变更，对于一般[新功能、性能提升和问题修复](/guide/changelog.html)不在此记录。
 
-## 从 v0.1.14 迁移到 v0.1.15
+## 从 v0.1.14 升级到 v0.1.15
 
 - [PlusSearch](/components/search.html#search-attributes) 新增了折叠动画
 
@@ -14,9 +14,11 @@
 
 - [PlusColumn](/components/config.html) 中对 `options` 新增了 `optionsMap`,可以对 `options` 中的字段显示进行自定义。 [参考](/components/config.html)
 
+- [PlusColumn](/components/config.html) 中 `tooltip` 新增了计算属性支持。 [参考](/components/config.html)
+
 <el-divider />
 
-## 从 v0.1.13 迁移到 v0.1.14
+## 从 v0.1.13 升级到 v0.1.14
 
 - [PlusPage](/components/page.html) Exposes 变更 [参考](/components/page.html#page-exposes)
 
@@ -24,7 +26,7 @@
 
 <el-divider />
 
-## 从 v0.1.8 迁移到 v0.1.11
+## 从 v0.1.8 升级到 v0.1.11
 
 - 提升了组件 TS 类型兼容性
 
@@ -32,7 +34,7 @@
 
 <el-divider />
 
-## 从 v0.1.7 迁移到 v0.1.8
+## 从 v0.1.7 升级到 v0.1.8
 
 - [PlusColumn](/components/config.html) 中的 `formItemProps` 中的 `labelWidth` 开始生效，原来[PlusColumn](/components/config.html) 中的配置 `labelWidth` 不再生效。
 
@@ -57,7 +59,7 @@ const columns: PlusColumn[] = [
 
 <el-divider />
 
-## 从 v0.1.4 迁移到 v0.1.6
+## 从 v0.1.4 升级到 v0.1.6
 
 ### [PlusDrawerForm](/components/drawer-form.html)
 
@@ -83,7 +85,7 @@ const columns: PlusColumn[] = [
 
 <el-divider />
 
-## 从 v0.0.9 迁移到 v0.0.10
+## 从 v0.0.9 升级到 v0.0.10
 
 ### PlusDrawerForm 抽屉表单 事件修改
 
@@ -91,7 +93,7 @@ const columns: PlusColumn[] = [
 
 <el-divider />
 
-## 从 v0.0.7 迁移到 v0.0.8
+## 从 v0.0.7 升级到 v0.0.8
 
 ### 国际化文件导入方式修改
 
@@ -124,7 +126,7 @@ import plusEn from 'plus-pro-components/es/locale/lang/en' // [!code ++]
 
 <el-divider />
 
-## 从 v0.0.4 迁移到 v0.0.5
+## 从 v0.0.4 升级到 v0.0.5
 
 ### PlusSearch 搜索组件
 
@@ -138,7 +140,7 @@ import plusEn from 'plus-pro-components/es/locale/lang/en' // [!code ++]
 
 <el-divider />
 
-## 从 v0.0.3 迁移到 v0.0.4
+## 从 v0.0.3 升级到 v0.0.4
 
 ### PlusFormItem 表单单项组件
 
@@ -148,7 +150,7 @@ import plusEn from 'plus-pro-components/es/locale/lang/en' // [!code ++]
 
 <el-divider />
 
-## 从 v0.0.2 迁移到 v0.0.3
+## 从 v0.0.2 升级到 v0.0.3
 
 ### 高级组件通用配置 columns
 
