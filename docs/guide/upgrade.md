@@ -12,6 +12,8 @@
   <PlusSearch :collapseTransition="false" />
   ```
 
+- [PlusColumn](/components/config.html) 中对 `options` 新增了 `optionsMap`,可以对 `options` 中的字段显示进行自定义。 [参考](/components/config.html)
+
 <el-divider />
 
 ## 从 v0.1.13 迁移到 v0.1.14
