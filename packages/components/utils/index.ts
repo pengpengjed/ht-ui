@@ -32,12 +32,14 @@ export const getTableKey = (item: PlusColumn, hasEditable = false) =>
  * @returns
  */
 export const getTooltip = (tooltip: PlusColumn['tooltip']) => {
-  if (isString(tooltip)) {
-    return { content: tooltip }
+  const tooltipData = unref(tooltip)
+  if (isString(tooltipData)) {
+    return { content: tooltipData }
   }
-  if (isPlainObject(tooltip)) {
-    return tooltip as RecordType
+  if (isPlainObject(tooltipData)) {
+    return tooltipData as RecordType
   }
+  return { content: '' }
 }
 
 const throwError = (data: any, type: string) => {

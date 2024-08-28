@@ -170,8 +170,15 @@ export interface CommonType {
     row: RecordType
   }) => OptionsRow
 
-  /** @desc 展示一个 icon，hover 是展示一些提示信息 */
-  tooltip?: ElTooltipProps | string
+  /**
+   * @desc 展示一个 icon，hover 时展示一些提示信息
+   * @version v0.1.15 新增 `ComputedRef<string>`  | `ComputedRef<Partial<ElTooltipProps>>`
+   */
+  tooltip?:
+    | string
+    | Partial<ElTooltipProps>
+    | ComputedRef<string>
+    | ComputedRef<Partial<ElTooltipProps>>
 
   /**
    *
