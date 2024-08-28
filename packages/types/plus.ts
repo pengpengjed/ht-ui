@@ -45,24 +45,25 @@ export type PropsItemType<T extends Record<string, any> = any> =
  */
 export interface OptionsRow<T = undefined> {
   /**
-   * @version v0.1.15 用来支持optionsMap
+   * @version v0.1.15 新增索引类型，用来支持optionsMap  @see /components/config.html
    */
   [index: keyof any]: any
   /**
-   * @version v0.1.15 变更为可选，用来支持optionsMap
+   * @version v0.1.15 变更为可选，用来支持optionsMap  @see /components/config.html
    */
   label?: number | string
   /**
-   * @version v0.1.15 变更为可选，用来支持optionsMap
+   * @version v0.1.7 新增 RecordType 类型
+   * @version v0.1.15 变更为可选，用来支持optionsMap  @see /components/config.html
    */
   value?: Exclude<number | string | boolean | RecordType, T>
   /**
-   * 小圆点背景色，
+   * 小圆点背景色，仅在表格和描述列表中生效
    * color 优先级 高于 type
    */
   color?: string
   /**
-   * 类型
+   * 小圆点颜色类型，仅在表格和描述列表中生效
    * type 优先级 低于 color，
    * 只支持 'success' | 'warning' | 'info' | 'primary' | 'danger'
    */
