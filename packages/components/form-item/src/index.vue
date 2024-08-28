@@ -250,6 +250,12 @@ export interface PlusFormItemProps {
   tooltip?: PlusColumn['tooltip']
   fieldSlots?: PlusColumn['fieldSlots']
   fieldChildrenSlot?: PlusColumn['fieldChildrenSlot']
+  /**
+   * @desc 对options 进行映射
+   * @version v0.1.15
+   * @default{ label: 'label'; value: 'value' }
+   */
+  optionsMap?: PlusColumn['optionsMap']
   index?: number
 }
 export interface PlusFormItemEmits {
@@ -284,6 +290,7 @@ const props = withDefaults(defineProps<PlusFormItemProps>(), {
   renderField: undefined,
   renderLabel: undefined,
   fieldChildrenSlot: undefined,
+  optionsMap: undefined,
   index: 0
 })
 const emit = defineEmits<PlusFormItemEmits>()
