@@ -1,3 +1,21 @@
+## [v0.1.15](https://github.com/plus-pro-components/plus-pro-components/compare/v0.1.14...v0.1.15) (2024-09-02)
+
+### ✨ Features
+
+- **components:** :sparkles: search component add needValidate props([e25f9b4](https://github.com/plus-pro-components/plus-pro-components/commit/e25f9b4)) by@xiaofei
+- **components:** :sparkles: tooltip add ComputedRef support([6de3134](https://github.com/plus-pro-components/plus-pro-components/commit/6de3134)) by@xiaofei
+- **types:** :sparkles: optionsRow add comment([c662144](https://github.com/plus-pro-components/plus-pro-components/commit/c662144)) by@xiaofei
+- **components:** :sparkles: plusColumn add optionsMap config.([50f076e](https://github.com/plus-pro-components/plus-pro-components/commit/50f076e)) by@xiaofei
+- **components:** :sparkles: form add collapse transition([e2eaf04](https://github.com/plus-pro-components/plus-pro-components/commit/e2eaf04)) by@xiaofei
+- **utils:** :sparkles: update utils([6c91f64](https://github.com/plus-pro-components/plus-pro-components/commit/6c91f64)) by@xiaofei
+- **components:** :sparkles: update utils([ccfbe93](https://github.com/plus-pro-components/plus-pro-components/commit/ccfbe93)) by@xiaofei
+- **components:** :sparkles: layout component add hasSidebar,hasHeader and hasBreadcrumb props.([0da5350](https://github.com/plus-pro-components/plus-pro-components/commit/0da5350)) by@xiaofei
+
+### 🐛 Bug Fixes
+
+- **components:** :bug: fix radio type error([0d55003](https://github.com/plus-pro-components/plus-pro-components/commit/0d55003)) by@xiaofei
+- **components:** :bug: fix select is multiple,table show error([e55e9a1](https://github.com/plus-pro-components/plus-pro-components/commit/e55e9a1)) by@xiaofei
+
 ## [v0.1.14](https://github.com/plus-pro-components/plus-pro-components/compare/v0.1.13...v0.1.14) (2024-08-01)
 
 ### ✨ Features
