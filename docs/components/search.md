@@ -96,6 +96,7 @@ search/async
 | `colProps`                                   | el-col 属性                                                                                                          | `object`[ColProps](https://element-plus.org/zh-CN/component/layout.html#col-attributes) | `{xs: 24,sm: 12,md: 8,lg: 8,xl: 6}` | 否       |
 | `collapseTransition`<el-tag>v0.1.15</el-tag> | 是否开启折叠动画                                                                                                     | `boolean`                                                                               | `true`                              | 否       |
 | `collapseTransition`<el-tag>v0.1.15</el-tag> | 折叠动持续时长(单位：ms)                                                                                             | `number`                                                                                | `300`                               | 否       |
+| `needValidate`<el-tag>v0.1.15</el-tag>       | 搜索是否需要校验 ，默认不需要校验表单                                                                                | `boolean`                                                                               | `false`                             | 否       |
 | ...                                          | ...                                                                                                                  | ...                                                                                     | ...                                 | ...      |
 
 :::tip 提示
@@ -104,12 +105,12 @@ search/async
 
 ## Search Events
 
-| 名称                              | 说明                    | 类型                                                                                        |
-| --------------------------------- | ----------------------- | ------------------------------------------------------------------------------------------- |
-| `search`                          | 点击查询按钮触发的事件  | `function` <docs-tip content='(values: FieldValues) => void'></docs-tip>                    |
-| `change`                          | 表单变化触发的事件      | `function` <docs-tip content='(values: FieldValues,column: PlusColumn) => void'></docs-tip> |
-| `reset`                           | 点击重置按钮触发的事件  | `function` <docs-tip content='(values: FieldValues) => void'></docs-tip>                    |
-| `collapse`<el-tag>v0.0.6</el-tag> | 点击展开/收起触发的事件 | `function` <docs-tip content='(isShowUnfold: Boolean) => void'></docs-tip>                  |
+| 名称                              | 说明                                                                                             | 类型                                                                                        |
+| --------------------------------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------- |
+| `search`                          | 点击查询按钮触发的事件。<el-tag>v0.1.15</el-tag> 版本新增 `needValidate`，开启后校验通过才会触发 | `function` <docs-tip content='(values: FieldValues) => void'></docs-tip>                    |
+| `change`                          | 表单变化触发的事件                                                                               | `function` <docs-tip content='(values: FieldValues,column: PlusColumn) => void'></docs-tip> |
+| `reset`                           | 点击重置按钮触发的事件                                                                           | `function` <docs-tip content='(values: FieldValues) => void'></docs-tip>                    |
+| `collapse`<el-tag>v0.0.6</el-tag> | 点击展开/收起触发的事件                                                                          | `function` <docs-tip content='(isShowUnfold: Boolean) => void'></docs-tip>                  |
 
 ## Search Slots
 
@@ -123,21 +124,21 @@ search/async
 
 **footer 作用域插槽参数说明**
 
-| 作用域插槽参数 | 说明                 | 类型                                                 | 默认值  |
-| -------------- | -------------------- | ---------------------------------------------------- | ------- |
-| `isShowUnfold` | 多余搜索表单展开情况 | `boolean`                                            | `false` |
-| `handleReset`  | 执行重置按钮方法     | `function` <docs-tip content="()=> void"></docs-tip> |         |
-| `handleSearch` | 执行搜索按钮方法     | `function` <docs-tip content="()=> void"></docs-tip> |         |
-| `handleUnfold` | 执行展开按钮方法     | `function` <docs-tip content="()=> void"></docs-tip> |         |
+| 作用域插槽参数 | 说明                 | 类型                                                                                                                                                                                    | 默认值  |
+| -------------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `isShowUnfold` | 多余搜索表单展开情况 | `boolean`                                                                                                                                                                               | `false` |
+| `handleReset`  | 执行重置按钮方法     | `function` <docs-tip content="()=> void"></docs-tip>                                                                                                                                    |         |
+| `handleSearch` | 执行搜索按钮方法     | `function` <docs-tip content="()=> void"></docs-tip> /<el-tag>v0.1.15</el-tag> 版本新增 `needValidate`,开启后类型为 `async function` <docs-tip content="()=> Promise<void>"></docs-tip> |         |
+| `handleUnfold` | 执行展开按钮方法     | `function` <docs-tip content="()=> void"></docs-tip>                                                                                                                                    |         |
 
 ## Exposes
 
-| 名称               | 说明                                   | 类型                                                      |
-| ------------------ | -------------------------------------- | --------------------------------------------------------- |
-| `plusFormInstance` | [PlusForm](/components/form.html) 实例 | `object` <docs-tip content="PlusFormInstance"></docs-tip> |
-| `handleReset`      | 执行重置按钮方法                       | `function` <docs-tip content="()=> void"></docs-tip>      |
-| `handleSearch`     | 执行搜索按钮方法                       | `function` <docs-tip content="()=> void"></docs-tip>      |
-| `handleUnfold`     | 执行展开按钮方法                       | `function` <docs-tip content="()=> void"></docs-tip>      |
+| 名称               | 说明                                   | 类型                                                                                                                                                                                    |
+| ------------------ | -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `plusFormInstance` | [PlusForm](/components/form.html) 实例 | `object` <docs-tip content="PlusFormInstance"></docs-tip>                                                                                                                               |
+| `handleReset`      | 执行重置按钮方法                       | `function` <docs-tip content="()=> void"></docs-tip>                                                                                                                                    |
+| `handleSearch`     | 执行搜索按钮方法                       | `function` <docs-tip content="()=> void"></docs-tip> /<el-tag>v0.1.15</el-tag> 版本新增 `needValidate`,开启后类型为 `async function` <docs-tip content="()=> Promise<void>"></docs-tip> |
+| `handleUnfold`     | 执行展开按钮方法                       | `function` <docs-tip content="()=> void"></docs-tip>                                                                                                                                    |
 
 ::: tip 提示
 拿到 plusFormInstance 中的 formInstance 可以支持所有[PlusFrom 方法](/components/form.html)，
