@@ -18,6 +18,12 @@ export type PlusSearchSelfProps = {
   labelPosition?: 'left' | 'right' | 'top'
   rowProps?: Partial<Mutable<RowProps>>
   colProps?: Partial<Mutable<ColProps>>
+  /**
+   * 搜索是否需要校验 ，默认不需要校验表单
+   * @variation v0.1.15
+   * @default  false
+   */
+  needValidate?: boolean
 }
 
 export type PlusSearchProps = PlusSearchSelfProps & PlusFormProps
