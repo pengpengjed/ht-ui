@@ -128,7 +128,8 @@ export interface ActionBarButtonsRow {
   code?: string | number
 
   /**
-   * 禁用
+   * 禁用 (已弃用请使用下文的props)
+   *  @deprecated
    */
   disabled?: boolean
 
