@@ -12,6 +12,8 @@ export type PlusSearchSelfProps = {
   hasUnfold?: boolean
   searchText?: string
   resetText?: string
+  retractText?: string
+  expandText?: string
   searchLoading?: boolean
   inline?: boolean
   showNumber?: number
