@@ -118,7 +118,7 @@ const attrs = useAttrs()
 
 const radioClick = (
   e: MouseEvent,
-  val: ValueType,
+  val: ValueType | undefined,
   fieldItemProps: OptionsRow['fieldItemProps']
 ) => {
   if (Reflect.has(attrs, 'disabled') || fieldItemProps?.disabled) {
@@ -130,15 +130,15 @@ const radioClick = (
     e.preventDefault()
   }
   // click阻止了change事件
-  state.radio === val ? (state.radio = '') : (state.radio = val)
+  state.radio = state.radio === val ? '' : (val as ValueType)
   emit('update:modelValue', state.radio)
   emit('change', state.radio)
 }
 
-const change = (val: ValueType) => {
+const change = (val: ValueType | undefined) => {
   if (props.isCancel) return
-  emit('update:modelValue', val)
-  emit('change', val)
+  emit('update:modelValue', val as ValueType)
+  emit('change', val as ValueType)
 }
 
 defineExpose({

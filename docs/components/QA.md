@@ -24,6 +24,18 @@
 </script>
 ```
 
+## 表格的 columns 使用 ref 定义类型报错
+
+[详见 issues/195](https://github.com/plus-pro-components/plus-pro-components/issues/195)
+
+```ts
+import type { Ref } from 'vue'
+import type { PlusColumn } from 'plus-pro-components'
+
+//  const columns = ref<PlusColumn[]>([])   类型替换为下面的写法
+const columns: Ref<PlusColumn[]> = ref([])
+```
+
 ## 是否兼容element-plus@2.6.0 ？
 
 是， [详见 issues/79](https://github.com/plus-pro-components/plus-pro-components/issues/79)，[详见 issues/105](https://github.com/plus-pro-components/plus-pro-components/issues/105)

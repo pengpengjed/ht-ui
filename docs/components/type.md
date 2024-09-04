@@ -128,7 +128,8 @@ export interface ActionBarButtonsRow {
   code?: string | number
 
   /**
-   * 禁用
+   * 禁用 (已弃用请使用下文的props)
+   *  @deprecated
    */
   disabled?: boolean
 
@@ -539,19 +540,27 @@ import type { VNode } from 'vue'
 /**
  * 选择框类型
  */
-export interface OptionsRow {
-  label: number | string
+export interface OptionsRow<T = undefined> {
+  /**
+   * @version v0.1.15 新增索引类型，用来支持optionsMap @see /components/config.html
+   */
+  [index: keyof any]: any
+  /**
+   * @version v0.1.15 变更为可选，用来支持optionsMap @see /components/config.html
+   */
+  label?: number | string
   /**
    * @version v0.1.7 新增 RecordType 类型
+   * @version v0.1.15 变更为可选，用来支持optionsMap @see /components/config.html
    */
-  value: number | string | RecordType
+  value?: Exclude<number | string | boolean | RecordType, T>
   /**
-   * 小圆点背景色，
+   * 小圆点背景色，仅在表格和描述列表中生效
    * color 优先级 高于 type
    */
   color?: string
   /**
-   *  类型
+   * 小圆点颜色类型，仅在表格和描述列表中生效
    * type 优先级 低于 color，
    * 只支持 'success' | 'warning' | 'info' | 'primary' | 'danger'
    */
@@ -562,14 +571,15 @@ export interface OptionsRow {
   fieldItemProps?: RecordType
   /**
    * el-checkbox-group下的，每一项el-checkbox的各自插槽(即el-checkbox的default插槽)。
-   * el-radio-group下的，每一项el-checkbox的内容各自插槽(即el--radio的default插槽)。
+   * el-radio-group下的，每一项el-checkbox的内容各自插槽(即el-radio的default插槽)。
+   * el-select下的，每一项el-option的内容整体插槽(即el-option的default插槽)。
    *
    * @see https://element-plus.org/zh-CN/component/checkbox.html#checkbox-slots
    * @see https://element-plus.org/zh-CN/component/radio.html#radio-slots
    */
-  fieldSlot?: (option?: OptionsRow) => VNode | string
+  fieldSlot?: (option?: OptionsRow) => RenderTypes
   /**
-   * 子选项
+   * 子选项，仅valueType 为 `cascader` 时生效
    */
   children?: OptionsRow[]
 }

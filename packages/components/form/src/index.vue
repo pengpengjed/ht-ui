@@ -42,6 +42,9 @@
             :row-props="rowProps"
             :col-props="colProps"
             :columns="filterHide(groupItem.columns)"
+            :has-label="hasLabel"
+            :collapse-transition="collapseTransition"
+            :collapse-duration="collapseDuration"
             @change="handleChange"
           >
             <!--表单项label插槽 -->
@@ -75,6 +78,8 @@
           :col-props="colProps"
           :columns="subColumns"
           :has-label="hasLabel"
+          :collapse-transition="collapseTransition"
+          :collapse-duration="collapseDuration"
           @change="handleChange"
         >
           <!--表单项label插槽 -->
@@ -163,7 +168,9 @@ const props = withDefaults(defineProps<PlusFormSelfProps>(), {
   columns: () => [],
   group: false,
   cardProps: () => ({}),
-  prevent: false
+  prevent: false,
+  collapseDuration: undefined,
+  collapseTransition: undefined
 })
 const emit = defineEmits<PlusFormEmits>()
 

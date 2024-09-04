@@ -13,8 +13,8 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-import type { PlusColumn, FieldValues } from 'plus-pro-components'
+import { ref, computed } from 'vue'
+import type { PlusColumn, FieldValues } from '@plus-pro-components/types'
 
 const state = ref<FieldValues>({
   status: '0',
@@ -48,7 +48,8 @@ const columns: PlusColumn[] = [
     width: 120,
     prop: 'name',
     valueType: 'copy',
-    tooltip: '名称最多显示6个字符'
+    //  v0.1.15 版本新增，支持计算属性
+    tooltip: computed(() => (state.value.name as string) || '提示：复制名称')
   },
   {
     label: '状态',

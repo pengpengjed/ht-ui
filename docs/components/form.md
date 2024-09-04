@@ -415,7 +415,7 @@ const handleValidate = (prop: FormItemProp, isValid: boolean, message: string) =
 | 名称           | 说明                                                                | 类型                                                                 |
 | -------------- | ------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | `formInstance` | `el-form` 实例                                                      | `object` <docs-tip content="InstanceType<typeof ElForm>"></docs-tip> |
-| `handleReset`  | 表单默认的重置方法                                                  | `function` <docs-tip content="() => void"></docs-tip>                |
+| `handleReset`  | 表单默认的重置方法，同时会清空校验                                  | `function` <docs-tip content="() => void"></docs-tip>                |
 | `handleSubmit` | 表单默认的提交方法，有校验的话，校验成功返回`true`，失败返回`false` | `function` <docs-tip content=" () => Promise<boolean>"></docs-tip>   |
 
 **拿到 formInstance 后支持所有[ElForm 方法](https://element-plus.org/zh-CN/component/form.html#form-exposes)**

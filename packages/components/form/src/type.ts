@@ -113,6 +113,16 @@ export type PlusFormSelfProps = {
    * @version v0.1.12
    */
   prevent?: boolean
+  /**
+   * @desc 动画时长
+   * @version v0.1.15
+   */
+  collapseDuration?: number
+  /**
+   * @desc 是否开启折叠动画
+   * @version v0.1.15
+   */
+  collapseTransition?: boolean
 }
 
 export type PlusFormProps = PlusFormSelfProps & Partial<ElementPlusFormProps> & RecordType

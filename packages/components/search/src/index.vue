@@ -115,12 +115,14 @@ const props = withDefaults(defineProps<PlusSearchProps>(), {
     md: 8,
     lg: 8,
     xl: 6
-  })
+  }),
+  needValidate: false
 })
 const emit = defineEmits<PlusSearchEmits>()
 
 const { t } = useLocale()
 const plusFormInstance = ref<PlusFormInstance | null>()
+
 const isShowUnfold = ref<boolean>(false)
 const values = ref<FieldValues>({})
 const slots = useSlots()
@@ -172,9 +174,20 @@ const handleChange = async (values: FieldValues, column: PlusColumn) => {
   emit('change', values, column)
 }
 
-const handleSearch = () => {
+const handleSearchDefault = () => {
   emit('search', values.value)
 }
+
+const handleSearchValidate = async () => {
+  const isValid = await plusFormInstance.value?.handleSubmit()
+  if (isValid) {
+    emit('search', values.value)
+  }
+}
+
+const handleSearch = computed(() =>
+  props.needValidate ? handleSearchValidate : handleSearchDefault
+)
 
 const handleReset = (): void => {
   values.value = { ...props.defaultValues }
@@ -191,7 +204,7 @@ const handleUnfold = (e: MouseEvent) => {
 defineExpose({
   plusFormInstance,
   handleReset,
-  handleSearch,
+  handleSearch: handleSearch.value,
   handleUnfold
 })
 </script>

@@ -44,15 +44,26 @@ export type PropsItemType<T extends Record<string, any> = any> =
  * 选择框类型
  */
 export interface OptionsRow<T = undefined> {
-  label: number | string
-  value: Exclude<number | string | boolean | RecordType, T>
   /**
-   * 小圆点背景色，
+   * @version v0.1.15 新增索引类型，用来支持optionsMap  @see /components/config.html
+   */
+  [index: keyof any]: any
+  /**
+   * @version v0.1.15 变更为可选，用来支持optionsMap  @see /components/config.html
+   */
+  label?: number | string
+  /**
+   * @version v0.1.7 新增 RecordType 类型
+   * @version v0.1.15 变更为可选，用来支持optionsMap  @see /components/config.html
+   */
+  value?: Exclude<number | string | boolean | RecordType, T>
+  /**
+   * 小圆点背景色，仅在表格和描述列表中生效
    * color 优先级 高于 type
    */
   color?: string
   /**
-   * 类型
+   * 小圆点颜色类型，仅在表格和描述列表中生效
    * type 优先级 低于 color，
    * 只支持 'success' | 'warning' | 'info' | 'primary' | 'danger'
    */
@@ -63,7 +74,7 @@ export interface OptionsRow<T = undefined> {
   fieldItemProps?: RecordType
   /**
    * el-checkbox-group下的，每一项el-checkbox的各自插槽(即el-checkbox的default插槽)。
-   * el-radio-group下的，每一项el-checkbox的内容各自插槽(即el--radio的default插槽)。
+   * el-radio-group下的，每一项el-checkbox的内容各自插槽(即el-radio的default插槽)。
    * el-select下的，每一项el-option的内容整体插槽(即el-option的default插槽)。
    *
    * @see https://element-plus.org/zh-CN/component/checkbox.html#checkbox-slots
@@ -71,7 +82,7 @@ export interface OptionsRow<T = undefined> {
    */
   fieldSlot?: (option?: OptionsRow) => RenderTypes
   /**
-   * 子选项
+   * 子选项，仅valueType 为 `cascader` 时生效
    */
   children?: OptionsRow[]
 }
@@ -137,9 +148,17 @@ export interface CommonType {
   descriptionsItemProps?: RecordType
 
   /**
-   * el-select，el-radio-group，el-checkbox-group 选项 ，支持数组，函数，和Promise
+   * el-select，el-radio-group，el-checkbox-group ,plus-radio选项 ，支持数组，函数，和Promise
    */
   options?: OptionsType
+
+  /**
+   * @desc 对options 进行映射，仅对`valueType` 为 `select`|`radio`|`checkbox`|`plus-radio` 时生效
+   * @version v0.1.15
+   * @default{ label: 'label',value: 'value'}
+   */
+  optionsMap?: { label?: string; value?: string }
+
   /**
    *  自定义状态显示逻辑 需要返回一个 OptionsRow
    * @param data
@@ -151,8 +170,15 @@ export interface CommonType {
     row: RecordType
   }) => OptionsRow
 
-  /** @desc 展示一个 icon，hover 是展示一些提示信息 */
-  tooltip?: ElTooltipProps | string
+  /**
+   * @desc 展示一个 icon，hover 时展示一些提示信息
+   * @version v0.1.15 新增 `ComputedRef<string>`  | `ComputedRef<Partial<ElTooltipProps>>`
+   */
+  tooltip?:
+    | string
+    | Partial<ElTooltipProps>
+    | ComputedRef<string>
+    | ComputedRef<Partial<ElTooltipProps>>
 
   /**
    *
