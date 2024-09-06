@@ -152,6 +152,13 @@ const render = (
   index: number,
   rest: RecordType
 ): VNode => {
+  /**
+   *button props新增计算属性和函数类型支持
+   */
+  const buttonRowProps = isFunction(buttonRow.props)
+    ? buttonRow.props(row, index, buttonRow)
+    : unref(buttonRow.props)
+
   if (props.type === 'icon') {
     return h(
       ElTooltip,
@@ -162,7 +169,7 @@ const render = (
             ElIcon,
             {
               size: 16,
-              ...buttonRow.props,
+              ...buttonRowProps,
               onClick: (event: MouseEvent) => handleClickAction(row, buttonRow, index, event, rest)
             },
             () => (buttonRow.icon ? h(buttonRow.icon) : '')
@@ -181,7 +188,7 @@ const render = (
         {
           size: 'small',
           ...defaultProps,
-          ...buttonRow.props,
+          ...buttonRowProps,
           onClick: (event: MouseEvent) => handleClickAction(row, buttonRow, index, event, rest)
         },
         () => {
