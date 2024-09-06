@@ -56,6 +56,8 @@ table/cell-style
 
 配置 `confirm` 即可实现二次确认。配置 `show` 即可实现权限和动态显示。
 
+操作栏配置详情参考 [ActionBarButtonsRow](/components/type.html#actionbarbuttonsrow)
+
 :::demo
 
 table/action-bar

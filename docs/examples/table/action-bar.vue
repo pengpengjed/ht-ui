@@ -75,27 +75,29 @@ buttons.value = [
     // 查看
     text: '查看',
     code: 'view',
-    props: {
-      type: 'info'
-    },
+    props: (row: any) => ({
+      type: 'info',
+      disabled: row.status === '1'
+    }),
     show: (row: any) => row.status === '1'
   },
   {
     // 修改
     text: '修改',
     code: 'edit',
-    props: {
-      type: 'primary'
-    },
+    // props v0.1.16 版本新增函数类型
+    props: (row: any) => ({
+      type: 'primary',
+      disabled: row.status === '1'
+    }),
     show: computed(() => true)
   },
   {
     // 删除
     text: '删除',
     code: 'delete',
-    props: {
-      type: 'danger'
-    },
+    // props v0.1.16 版本新增计算属性支持
+    props: computed(() => ({ type: 'danger' })),
     confirm: {
       options: { draggable: true }
     }
@@ -125,9 +127,11 @@ buttons1.value = [
     text: '修改',
     code: 'edit',
     icon: Edit,
-    props: {
-      type: 'primary'
-    },
+    // props v0.1.16 版本新增函数类型
+    props: (row: any) => ({
+      type: 'primary',
+      disabled: row.status === '1'
+    }),
     show: computed(() => true)
   },
   {
@@ -135,9 +139,8 @@ buttons1.value = [
     text: '删除',
     code: 'delete',
     icon: Delete,
-    props: {
-      type: 'danger'
-    },
+    // props v0.1.16 版本新增计算属性支持
+    props: computed(() => ({ type: 'danger' })),
     confirm: {
       message: data => `确定删除id为${data.row.id}的数据吗？`,
       options: { draggable: true }
@@ -168,9 +171,12 @@ buttons2.value = [
     text: '修改',
     code: 'edit',
     icon: Edit,
-    props: {
-      type: 'primary'
-    },
+    // props v0.1.16 版本新增函数类型
+    props: (row: any) => ({
+      type: 'primary',
+      size: row.status === '1' ? 28 : 16,
+      color: row.status === '1' ? 'red' : '#333'
+    }),
     show: computed(() => true)
   },
   {
@@ -178,9 +184,8 @@ buttons2.value = [
     text: '删除',
     code: 'delete',
     icon: Delete,
-    props: {
-      type: 'danger'
-    },
+    // props v0.1.16 版本新增计算属性支持
+    props: computed(() => ({ type: 'danger' })),
     confirm: {
       message: data => `确定删除id为${data.row.id}且行数为${data.index}的数据吗？`
     }
