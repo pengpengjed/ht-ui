@@ -60,7 +60,11 @@
             href="javaScript:;"
             @click="handleUnfold"
           >
-            {{ isShowUnfold ? retractText || t('plus.search.retract') : expandText || t('plus.search.expand') }}
+            {{
+              isShowUnfold
+                ? retractText || t('plus.search.retract')
+                : expandText || t('plus.search.expand')
+            }}
             <el-icon>
               <ArrowUp v-if="isShowUnfold" />
               <ArrowDown v-else />
