@@ -53,7 +53,7 @@
       :class="subCollapse ? 'is-collapse' : ''"
       @click="toggleCollapse"
     >
-      <el-icon v-if="collapse"><Expand /></el-icon>
+      <el-icon v-if="subCollapse"><Expand /></el-icon>
       <el-icon v-else><Fold /></el-icon>
     </el-menu-item>
   </el-menu>
