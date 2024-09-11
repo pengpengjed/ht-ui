@@ -367,8 +367,7 @@ const getStatus = computed(() => {
       value: displayValue.value,
       row: subRow.value
     })
-
-    return option
+    return option || { label: '', value: '' }
   }
 
   if (

@@ -24,11 +24,18 @@ import type { RecordType, PageInfo, FieldValueType, PlusColumn } from '@plus-pro
 import type { ComponentSize } from 'element-plus/es/constants'
 
 /**
+ * 按钮属性的类型
+ */
+export type ButtonRowProps = Partial<
+  Mutable<ButtonProps & LinkProps & IconProps & { [index: string]: any }>
+>
+/**
  * 表格操作栏按钮配置项的值的类型
  */
 export interface ActionBarButtonsRow {
   /**
    * 操作文本
+   * @version v0.0.8 新增函数类型
    */
   text:
     | string
@@ -40,8 +47,7 @@ export interface ActionBarButtonsRow {
         button: ActionBarButtonsRow
       ) => string | Ref<string> | ComputedRef<string>)
   /**
-   * 操作唯一code
-   *
+   * 操作按钮唯一code，可用来判断按钮类型
    */
   code?: string | number
 
@@ -51,8 +57,12 @@ export interface ActionBarButtonsRow {
   icon?: Component
   /**
    * ElButton,ElLink和ElIcon 组件对应的props
+   *  @version v0.1.16 新增函数类型和计算属性
    */
-  props?: Partial<Mutable<ButtonProps & LinkProps & IconProps & { [index: string]: any }>>
+  props?:
+    | ButtonRowProps
+    | ((row: any, index: number, button: ActionBarButtonsRow) => ButtonRowProps)
+    | ComputedRef<ButtonRowProps>
   /**
    * ElTooltip组件的props， type 为icon 时生效
    */

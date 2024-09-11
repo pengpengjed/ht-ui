@@ -1,3 +1,15 @@
+## [v0.1.16](https://github.com/plus-pro-components/plus-pro-components/compare/v0.1.15...v0.1.16) (2024-09-06)
+
+### ✨ Features
+
+- **components:** :sparkles: actionBarButtonsRow[props] add function and computed support([f2dcc6a](https://github.com/plus-pro-components/plus-pro-components/commit/f2dcc6a)) by@xiaofei
+- **all:** Merge pull request [#201](https://github.com/plus-pro-components/plus-pro-components/pull/201) from simple-hui/feature/search([aeb0c49](https://github.com/plus-pro-components/plus-pro-components/commit/aeb0c49)) by@zpx
+- **all:** search 组件增加 props retractText expandText 默认使用组件为英文，主框架不引入 i18n 无法自定义展开及收起名称([3ca6c32](https://github.com/plus-pro-components/plus-pro-components/commit/3ca6c32)) by@liaohui
+
+### 🐛 Bug Fixes
+
+- **components.:** :bug: fix customGetStatus Cannot read properties of undefined (reading 'color')([f84f1b7](https://github.com/plus-pro-components/plus-pro-components/commit/f84f1b7)) by@xiaofei
+
 ## [v0.1.15](https://github.com/plus-pro-components/plus-pro-components/compare/v0.1.14...v0.1.15) (2024-09-02)
 
 ### ✨ Features

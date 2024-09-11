@@ -104,13 +104,21 @@ export interface PageInfo {
 import type { ElMessageBoxOptions } from 'element-plus'
 import type { Component, Ref, ComputedRef, AppContext, DirectiveArguments } from 'vue'
 import type { RecordType, ButtonsCallBackParams } from 'plus-pro-components'
+
+/**
+ * 按钮属性的类型
+ */
+export type ButtonRowProps = Partial<
+  Mutable<ButtonProps & LinkProps & IconProps & { [index: string]: any }>
+>
+
 /**
  * 表格操作栏按钮配置项的值的类型
  */
 export interface ActionBarButtonsRow {
   /**
    * 操作文本
-   * 函数类型 v0.0.8 新增
+   * @version v0.0.8 新增函数类型
    */
   text:
     | string
@@ -122,16 +130,9 @@ export interface ActionBarButtonsRow {
         button: ActionBarButtonsRow
       ) => string | Ref<string> | ComputedRef<string>)
   /**
-   * 操作唯一code，可以用来判断是哪个按钮触发的PlusTable的`clickAction` 事件
-   *
+   * 操作按钮唯一code，可用来判断按钮类型
    */
   code?: string | number
-
-  /**
-   * 禁用 (已弃用请使用下文的props)
-   *  @deprecated
-   */
-  disabled?: boolean
 
   /**
    * `@element-plus/icons-vue` 的图标名称，对ElButton,ElLink 和ElIcon 组件同时生效
@@ -139,12 +140,16 @@ export interface ActionBarButtonsRow {
   icon?: Component
   /**
    * ElButton,ElLink和ElIcon 组件对应的props
+   *  @version v0.1.16 新增函数类型和计算属性
    */
-  props?: RecordType
+  props?:
+    | ButtonRowProps
+    | ((row: any, index: number, button: ActionBarButtonsRow) => ButtonRowProps)
+    | ComputedRef<ButtonRowProps>
   /**
    * ElTooltip组件的props， type 为icon 时生效
    */
-  tooltipProps?: RecordType
+  tooltipProps?: Partial<ElTooltipProps>
 
   /**
    * 按钮显示的逻辑 默认 true 显示， 不需要显示给 false
@@ -175,20 +180,22 @@ export interface ActionBarButtonsRow {
          * 默认 `确定执行本次操作`
          */
         message?: string | ((data: ButtonsCallBackParams) => string)
-        /**
-         *  ElMessageBox.confirm的 options
-         */
-        options?: ElMessageBoxOptions
 
         /**
-         *  ElMessageBox.confirm的 appContext
+         *  ElMessageBox.confirm 的options
+         */
+        options?: ElMessageBoxOptions
+        /**
+         *  ElMessageBox.confirm 的appContext
          */
         appContext?: AppContext | null
       }
+
   /**
    * 指令，可以用来控制权限，数据类型是二维数组
    * @version v0.1.7
    * @see https://cn.vuejs.org/guide/extras/render-function.html#custom-directives
+   *
    */
   directives?: DirectiveArguments
 

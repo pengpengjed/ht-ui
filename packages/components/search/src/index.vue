@@ -60,7 +60,11 @@
             href="javaScript:;"
             @click="handleUnfold"
           >
-            {{ isShowUnfold ? t('plus.search.retract') : t('plus.search.expand') }}
+            {{
+              isShowUnfold
+                ? retractText || t('plus.search.retract')
+                : expandText || t('plus.search.expand')
+            }}
             <el-icon>
               <ArrowUp v-if="isShowUnfold" />
               <ArrowDown v-else />
@@ -102,6 +106,8 @@ const props = withDefaults(defineProps<PlusSearchProps>(), {
   searchLoading: false,
   searchText: '',
   resetText: '',
+  retractText: '',
+  expandText: '',
   inline: true,
   showNumber: 2,
   labelPosition: undefined,
